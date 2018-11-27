@@ -1,0 +1,87 @@
+<div class="page-header"  style="padding-left: 140px">
+  <h1>
+    view-task!
+  </h1>
+  </div>
+<div class="container">
+
+  <div class="row" style="margin-left:150px">
+      <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+     
+        <h2>Search</h2>
+        <hr class="colorgraph">
+        <div class="row">
+          <div class="col-xs-8 col-sm-4 col-md-4">
+            <div class="form-group">
+              <input type="text" name="task" id="task" class="form-control input-lg" placeholder="Task" tabindex="1">
+            </div>
+          </div>
+          <div class="col-xs-8 col-sm-4 col-md-4">
+            <div class="form-group">
+              <input type="text" name="parenttask" id="parenttask" class="form-control input-lg" placeholder="Parent Task" tabindex="2">
+            </div>
+          </div>
+          <div class="col-xs-8 col-sm-4 col-md-4">
+            <div class="form-group">
+              <input type="text" name="priorityfrom" id="priorityfrom" class="form-control input-lg" placeholder="Priority From" tabindex="2">
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-xs-8 col-sm-4 col-md-4">
+            <div class="form-group">
+              <input type="text" name="startdate" id="startdate" class="form-control input-lg" placeholder="Start Date" tabindex="1">
+            </div>
+          </div>
+          <div class="col-xs-8 col-sm-4 col-md-4">
+            <div class="form-group">
+              <input type="text" name="enddate" id="enddate" class="form-control input-lg" placeholder="End Date" tabindex="2">
+            </div>
+          </div>
+          <div class="col-xs-8 col-sm-4 col-md-4">
+            <div class="form-group">
+              <input type="text" name="priorityto" id="priorityto" class="form-control input-lg" placeholder="Priority To" tabindex="2">
+            </div>
+          </div>
+        </div>
+        
+      
+     
+    </div>
+  </div>
+  
+ 
+ </div>  
+    
+
+<div style="margin-left:-120px" >
+  
+  <table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th  style="visibility:hidden">Id</th>
+      <th>Task</th>
+      <th>Parent</th>
+      <th>Priority</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Action</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="table-success">
+      <td style="visibility:hidden">1</td>
+      <td>Task_Name</td>
+      <td>Parent_Task</td>
+      <td>task.priority</td>
+      <td>2432</td>
+      <td>245</td>
+      <td><button class="btn btn-dark" (click)="editTask(task)"> Edit</button></td>
+      <td><button class="btn btn-dark" (click)="endTask(task)" style="margin-left: 20px;"> End Task</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

@@ -1,0 +1,66 @@
+<div class="page-header"  style="padding-left: 140px">
+  <h1>
+    add-project!
+  </h1>
+  </div>
+  <!-- Default form contact -->
+  <div  style="margin: auto; width: 75%; border: 3px solid #008000;padding: 10px;">
+          <div class="row mb-4" style="padding-left: 140px">
+                  <div class="col-lg-3">
+                       <label for="project" style="font-weight: bold">Project:</label>
+                  </div>
+                  <div class="col-lg-6" style="margin-left:-75px">
+                       <input type="text"  class="form-control"  id="project">
+                  </div>
+              </div> 
+              <div class="row mb-4" style="padding-left: 140px">               
+                <div class="col-lg-4" style="margin-left:-85px">                   
+                  <label style="font-weight: bold;padding-left:5px">Set Start and End Date:</label>
+                </div>
+                <div class="col-lg-1" style="margin-left:-45px">
+                    <input id="setdate" type="checkbox" /> 
+                </div>               
+            </div> 
+            <div class="row mb-4" style="margin-left:250px"> 
+                <div class="col-lg-4" style="margin-left:-25px">
+                    <input  type="text" style="width:175px" onfocus="(this.type='date')" placeholder="Start Date" class="form-control" id="startdate">
+               </div>
+               <div class="col-lg-4" style="margin-left:10px">
+                <input  type="text" style="width:175px" onfocus="(this.type='date')" placeholder="End Date"class="form-control"  id="enddate">
+              </div>
+            </div>
+               
+              <div class="row mb-4" style="padding-left: 140px">
+                   <div class="col-lg-3">
+                        <label for="slider1" style="font-weight: bold">Priority:</label>
+                   </div>
+                   <div class="col-lg-6" style="margin-left:-75px">
+                    <input id="slider1" type="range"  min="10" max="30" step="5" /> 
+                   </div>
+               </div>                           
+               
+              
+               <div class="row mb-4" style="padding-left: 140px">
+                <div class="col-lg-3">
+                     <label for="startdate" style="font-weight: bold">Manager:</label>
+                </div>
+                <div class="col-lg-6" style="margin-left:-75px">
+                     <input type="text" class="form-control"  id="txtmanager">
+                </div>
+            </div>              
+            
+          <div class="row mb-4" style="padding-left: 360px">
+            <div class="col-lg-3 col-lg-offset-3" style="margin-left:-75px">
+              <input type="submit" value="Add" class="btn btn-dark"  (click)="createTask()">
+            </div>
+            <div class="col-lg-3 col-lg-offset-3">
+              <button type="submit" class="btn btn-dark">Reset</button>
+            </div>
+        </div> 
+           
+           
+  </div>
+    
+  <!-- Default form contact -->
+  
+  
