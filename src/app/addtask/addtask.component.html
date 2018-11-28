@@ -13,7 +13,7 @@
                <input type="text" class="form-control"  id="project">
           </div>
           <div class="col-lg-3">
-             <img src="../src/images/Search-icon.png">
+             <img src="../src/images/Search-icon.png" (click)="showProjects()">
          </div>
       </div> 
        
@@ -181,6 +181,10 @@
                                         <input type="button" style="margin-left:65px"  class="btn btn-dark" value="Suspend" >
                                   </div>
                              </div>                          
+    </div>
+
+    <div *ngIf="showprojects" id="myDiv" style="border:1px">
+    <label>sfdssfs</label>
     </div>
     
 </div>
