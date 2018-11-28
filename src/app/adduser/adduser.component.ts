@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {User} from "../model/user.model";
+import { NgForm } from '@angular/forms/src/directives/ng_form';
 
 @Component({
   selector: 'app-adduser',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdduserComponent implements OnInit {
 
+  user = new User();
   constructor() { }
 
   ngOnInit() {
   }
+  onSubmit() {
+    alert('SUCCESS!! :-');
+  }
 
+  resetForm(form:NgForm) {
+    form.reset();
+  }
 }

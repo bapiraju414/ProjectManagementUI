@@ -5,13 +5,17 @@
   </div>
   <!-- Default form contact -->
   <div  style="margin: auto; width: 75%; border: 3px solid #008000;padding: 10px;">
+      <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
           <div class="row mb-4" style="padding-left: 140px">
                   <div class="col-lg-3">
                        <label for="fname" style="font-weight: bold">First Name:</label>
                   </div>
-                  <div class="col-lg-6">
-                       <input type="text" class="form-control"  id="fname">
-                  </div>
+                  <div class="col-lg-6">                      
+                      <input type="text" [(ngModel)]="user.firstName" #firstName="ngModel" required name="firstName" class="form-control">                    
+                      <span class="help-block" *ngIf="firstName.errors?.required && f.submitted">
+                          First Name is required
+                      </span>
+                 </div>
               </div> 
                
               <div class="row mb-4" style="padding-left: 140px">
@@ -19,7 +23,10 @@
                         <label for="lname" style="font-weight: bold">Last Name:</label>
                    </div>
                    <div class="col-lg-6">
-                    <input type="text" class="form-control"  id="lname">
+                      <input type="text" [(ngModel)]="user.lastName" #lastName="ngModel" required name="lastName" class="form-control">                    
+                      <span class="help-block" *ngIf="lastName.errors?.required && f.submitted">
+                          Last Name is required
+                      </span>
                    </div>
                </div> 
                           
@@ -28,7 +35,10 @@
                             <label for="empid" style="font-weight: bold">Employee Id</label>
                      </div> 
                  <div class="col-lg-6">
-                  <input type="text" class="form-control"  id="empid">
+                    <input type="text" [(ngModel)]="user.employeeId" #employeeId="ngModel" required name="employeeId" class="form-control">                    
+                    <span class="help-block" *ngIf="employeeId.errors?.required && f.submitted">
+                        Employee Id is required
+                    </span>
                   </div>
                 </div>             
                           
@@ -38,10 +48,10 @@
               <input type="submit" value="Add" class="btn btn-primary"  (click)="createTask()">
             </div>
             <div class="col-lg-3 col-lg-offset-3">
-              <button type="submit" class="btn btn-primary">Reset</button>
+              <button type="reset" class="btn btn-primary" (click)="resetForm()">Reset</button>
             </div>
         </div>           
-           
+      </form>
   </div>
     <hr class="hr">
   <!-- Default form contact -->
