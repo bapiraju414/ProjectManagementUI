@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from "@angular/common/http";
-
-
+import { OrderModule } from 'ngx-order-pipe';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 
 import { AppComponent } from './app.component';
 import { AddtaskComponent } from './addtask/addtask.component';
@@ -47,7 +47,10 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    FormsModule      
+    FormsModule,
+    HttpClientModule,
+    OrderModule,
+    FilterPipeModule      
   ],
   providers: [],
   bootstrap: [AppComponent]

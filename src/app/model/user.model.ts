@@ -1,12 +1,16 @@
 export class User {
-
-
-    firstName: string;
     
+    userId:number;
+
+    firstName: string;    
 
     lastName:string;
 
-    employeeId:number
+    employeeId:number;
+     
+    projectId:number;
+
+    taskId:number
   
     
   }

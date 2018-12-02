@@ -5,7 +5,7 @@
   </div>
   <!-- Default form contact -->
   <div  style="margin: auto; width: 75%; border: 3px solid #008000;padding: 10px;">
-      <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <form name="form" (ngSubmit)="f.form.valid && createUser()" #f="ngForm" novalidate>
           <div class="row mb-4" style="padding-left: 140px">
                   <div class="col-lg-3">
                        <label for="fname" style="font-weight: bold">First Name:</label>
@@ -45,51 +45,55 @@
           
           <div class="row mb-4" style="padding-left: 360px">
             <div class="col-lg-3 col-lg-offset-3">
-              <input type="submit" value="Add" class="btn btn-primary"  (click)="createTask()">
+              <input type="submit" value="Add" class="btn btn-dark">
             </div>
             <div class="col-lg-3 col-lg-offset-3">
-              <button type="reset" class="btn btn-primary" (click)="resetForm()">Reset</button>
+              <button type="reset" class="btn btn-dark" (click)="resetForm()">Reset</button>
             </div>
         </div>           
       </form>
   </div>
- <div  style="margin:auto;margin-top:10px; width: 75%; border: 3px solid #008000;padding: 10px;">
+
+  <div class="row mb-4" style="margin:auto;margin-top:10px; width: 75%; border: 3px solid #008000;padding: 10px;">  
+        <div class="col-lg-4">
+          <input type="text" class="form-control" placeholder="Search by First Name" [(ngModel)]="userFilter.firstName" id="txtSearch">
+        </div>
+        <div class="col-lg-2" style="margin-left:-5px">
+            <label style="font-weight: bold">Sort By:</label>
+        </div>
+        <div class="col-lg-2" style="margin-left:-55px">    
+            <input type="button" class="btn btn-dark" value="First Name" (click)="setOrder('user.firstName')" >  
+           
+        </div>
+        <div class="col-lg-2">
+                <input type="button" class="btn btn-dark" value="Last Name" (click)="setOrder('user.lastName')">
+        </div>
+        <div class="col-lg-2">
+           <input type="button" class="btn btn-dark" value="Employee ID" (click)="setOrder('user.employeeId')">
+         </div>
+    </div>
+ <div  *ngFor="let user of users | orderBy: order:reverse:'case-insensitive'| filterBy: userFilter" style="margin:auto;margin-top:10px; width: 75%; border: 3px solid #008000;padding: 10px;">
     
-      <div class="row mb-4">  
-            <div class="col-lg-4">
-              <input type="text" class="form-control" placeholder="Search" id="txtSearch">
-            </div>
-            <div class="col-lg-2" style="margin-left:-5px">
-                <label style="font-weight: bold">Sort By:</label>
-            </div>
-            <div class="col-lg-2" style="margin-left:-55px">    
-                <input type="button" class="btn btn-dark" value="First Name" >  
-            </div>
-            <div class="col-lg-2">
-                    <input type="button" class="btn btn-dark" value="Last Name" >
-            </div>
-            <div class="col-lg-2">
-                    <input type="button" class="btn btn-dark" value="Employee ID" >
-            </div>
-        </div>
+     
         <div>
-        <div class="row mb-2"> 
-          <div class="col-lg-6" style="background-color:cadetblue;margin-left:10px">
-           <label>Uddaraju</label>
-          </div> 
-          <div class="col-lg-4"><input type="button" class="btn btn-dark" value="Edit"></div>
-        </div>
-        <div class="row mb-2" > 
-            <div class="col-lg-6" style="background-color:cadetblue;margin-left:10px">
-             <label>BapiRaju</label>
+            <div class="row mb-2"> 
+            <div class="col-lg-6" style="background-color:rgb(26, 219, 161);margin-left:10px">
+            <label>{{user.firstName}}</label>
+            <label style="display:none">{{user.userId}}</label>
             </div> 
-            <div class="col-lg-4"><input type="button" class="btn btn-dark" value="Delete"></div>
-          </div>
-          <div class="row mb-2"> 
-              <div class="col-lg-6" style="background-color:cadetblue;margin-left:10px">
-               <label>227004</label>
-              </div>               
+            <div class="col-lg-4"><input type="button" class="btn btn-dark" value="Edit" (click)="EditUser(user)"></div>
             </div>
+            <div class="row mb-2" > 
+                <div class="col-lg-6" style="background-color:rgb(166, 170, 214);margin-left:10px">
+                <label>{{user.lastName}}</label>
+                </div> 
+                <div class="col-lg-4"><input type="button" class="btn btn-dark" value="Delete" (click)="DeleteUser(user.userId)"></div>
+            </div>
+            <div class="row mb-2"> 
+                <div class="col-lg-6" style="background-color:rgb(82, 78, 105);margin-left:10px">
+                <label>{{user.employeeId}}</label>
+                </div>               
+                </div>
         </div>
   </div>
   <!-- Default form contact -->

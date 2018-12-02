@@ -4,6 +4,8 @@ export class Task {
     TaskId: number;
   
     Parent_ID: number;
+    
+    Project_ID:number;
 
     Parent_Task:string;
   
