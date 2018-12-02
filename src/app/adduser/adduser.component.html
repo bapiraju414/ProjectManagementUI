@@ -78,20 +78,20 @@
         <div>
             <div class="row mb-2"> 
             <div class="col-lg-6" style="background-color:rgb(26, 219, 161);margin-left:10px">
-            <label>{{user.firstName}}</label>
+            <label style="font-weight: bold">{{user.firstName}}</label>
             <label style="display:none">{{user.userId}}</label>
             </div> 
             <div class="col-lg-4"><input type="button" class="btn btn-dark" value="Edit" (click)="EditUser(user)"></div>
             </div>
             <div class="row mb-2" > 
                 <div class="col-lg-6" style="background-color:rgb(166, 170, 214);margin-left:10px">
-                <label>{{user.lastName}}</label>
+                <label style="font-weight: bold">{{user.lastName}}</label>
                 </div> 
                 <div class="col-lg-4"><input type="button" class="btn btn-dark" value="Delete" (click)="DeleteUser(user.userId)"></div>
             </div>
             <div class="row mb-2"> 
                 <div class="col-lg-6" style="background-color:rgb(82, 78, 105);margin-left:10px">
-                <label>{{user.employeeId}}</label>
+                <label style="font-weight: bold">{{user.employeeId}}</label>
                 </div>               
                 </div>
         </div>

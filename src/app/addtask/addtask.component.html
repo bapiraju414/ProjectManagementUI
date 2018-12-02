@@ -13,7 +13,7 @@
                <input type="text" class="form-control"  id="project">
           </div>
           <div class="col-lg-3">
-             <img src="../src/images/Search-icon.png" (click)="showProjects()">
+             <img src="../src/images/Search-icon.png" data-toggle="modal" data-target="#myModal">
          </div>
       </div> 
        
@@ -75,7 +75,7 @@
                       <label for="user" style="font-weight: bold">Usre</label>
                </div> 
                <div class="col-lg-6">
-                  <input type="text" class="form-control"  id="user">
+                  <input type="text" class="form-control"  [(ngModel)]="project.UserName" id="user">
              </div>
              <div class="col-lg-3">
                 <img src="../src/images/Search-icon.png">
@@ -183,9 +183,31 @@
                              </div>                          
     </div>
 
-    <div *ngIf="showprojects" id="myDiv" style="border:1px">
-    <label>sfdssfs</label>
-    </div>
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Select Users</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+      
+            <!-- Modal body -->
+            <div class="modal-body">
+                <ul *ngFor="let user of users" class="list-group">
+                    <li class="list-group-item" (click)="SelectUser(user)"><label style="display:none">{{user.userId}}</label>{{user.firstName}}</li>                    
+                  </ul> 
+            </div>
+      
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+            </div>
+      
+          </div>
+        </div>
+      </div>
     
 </div>
  

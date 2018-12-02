@@ -4,5 +4,9 @@ export class Project{
     Start_Date:Date;
     End_Date:Date;
     Priority:number;
-    Status:number
+    Status:number;
+    Parent_ID:number;
+    User_Id:number;
+    ParentName:string;
+    UserName:string
 }
