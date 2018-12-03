@@ -5,12 +5,16 @@
   </div>
   <!-- Default form contact -->
   <div  style="margin: auto; width: 75%; border: 3px solid #008000;padding: 10px;">
+      <form name="form" (ngSubmit)="f.form.valid && createTask()" #f="ngForm" novalidate>
       <div class="row mb-4" style="padding-left: 140px">
           <div class="col-lg-3">
                <label for="project" style="font-weight: bold">Project:</label>
           </div>
           <div class="col-lg-6">
-               <input type="text" class="form-control"  id="project">
+               <input type="text" class="form-control"  [(ngModel)]="task.ProjectName" #ProjectName="ngModel" required name="ProjectName" id="project">
+               <span class="help-block" *ngIf="ProjectName.errors?.required && f.submitted">
+                  Project Name is required
+              </span>
           </div>
           <div class="col-lg-3">
              <img src="../src/images/Search-icon.png" data-toggle="modal" data-target="#myModal">
@@ -22,7 +26,10 @@
                        <label for="task" style="font-weight: bold">Task:</label>
                   </div>
                   <div class="col-lg-6">
-                       <input type="text" class="form-control"  id="task">
+                       <input type="text" class="form-control"  [(ngModel)]="task.TaskName" #TaskName="ngModel" required name="TaskName" id="task">
+                       <span class="help-block" *ngIf="TaskName.errors?.required && f.submitted">
+                          Task Name is required
+                      </span>
                   </div>
               </div>
               <div class="row mb-4" style="padding-left: 140px">
@@ -58,8 +65,12 @@
                      <label for="startdate" style="font-weight: bold">Start Date:</label>
                 </div>
                 <div class="col-lg-6">
-                     <input type="date" class="form-control"  id="startdate">
+                     <input type="date" class="form-control" [(ngModel)]="task.Start_Date" #Start_Date="ngModel" required name="Start_Date"  id="startdate">
+                     <span class="help-block" *ngIf="Start_Date.errors?.required && f.submitted">
+                        Start_Date is required
+                    </span>
                 </div>
+                
             </div> 
              
             <div class="row mb-4" style="padding-left: 140px">
@@ -67,15 +78,21 @@
                    <label for="enddate" style="font-weight: bold">End Date:</label>
               </div>
               <div class="col-lg-6">
-                   <input type="date" class="form-control"  id="enddate">
+                   <input type="date" class="form-control"  [(ngModel)]="task.End_Date" #End_Date="ngModel" required name="End_Date"  id="enddate">
+                   <span class="help-block" *ngIf="End_Date.errors?.required && f.submitted">
+                      End_Date is required
+                  </span>
               </div>
           </div> 
           <div class="row mb-4" style="padding-left: 140px">
               <div class="col-lg-3">
-                      <label for="user" style="font-weight: bold">Usre</label>
+                      <label for="user" style="font-weight: bold">User:</label>
                </div> 
                <div class="col-lg-6">
-                  <input type="text" class="form-control"  [(ngModel)]="project.UserName" id="user">
+                  <input type="text" class="form-control"  [(ngModel)]="task.UserName" #UserName="ngModel" required name="UserName"  id="user">
+                  <span class="help-block" *ngIf="UserName.errors?.required && f.submitted">
+                      UserName is required
+                  </span>
              </div>
              <div class="col-lg-3">
                 <img src="../src/images/Search-icon.png">
@@ -83,13 +100,13 @@
           </div>
           <div class="row mb-4" style="padding-left: 360px">
             <div class="col-lg-3 col-lg-offset-3">
-              <input type="submit" value="Add Task" class="btn btn-dark"  (click)="createTask()">
+              <input type="submit" value="Add Task" class="btn btn-dark">
             </div>
             <div class="col-lg-3 col-lg-offset-3">
               <button type="submit" class="btn btn-dark">Reset</button>
             </div>
         </div> 
-           
+      </form>
     
   </div>
   <div  style="margin:auto;margin-top:10px; width: 75%; border: 3px solid #008000;padding: 10px;">
@@ -149,43 +166,12 @@
                           </div>
                      </div>           
                        <hr>             
-                     <div class="row mb-4" style="margin:auto;padding:10px;">
-                            <div class="col-lg-4">
-                               <label style="font-weight: bold">Project:ProjectTest</label>    
-                              
-                             </div>
-                             <div class="col-lg-4">
-                                    <label style="font-weight: bold">Priority:{{60}}</label>
-                             </div>
-                             <div class="col-lg-4">
-                                    <input type="button" class="btn btn-dark" value="Update" >
-                             </div> 
-                                             
-                    </div>
-                    <div class="row mb-2" style="margin:auto;padding:10px;">
-                            <div class="col-lg-3">
-                               <label style="font-weight:bold;white-space: nowrap;margin-left:0px">No of Tasks:{{54}}</label>
-                            </div>
-                            <div class="col-lg-3">
-                                    <label style="font-weight:bold;white-space: nowrap;margin-left:65px">Completed:{{23}}</label>
-                              </div>
-                     </div>  
-                     <div class="row mb-2" style="margin:auto;padding:10px;">
-                                <div  class="col-lg-4">
-                                   <label style="font-weight: bold;white-space: nowrap;margin-left:0px">Start Date:11/15/4434</label>
-                                </div>
-                                <div  class="col-lg-3">
-                                        <label style="font-weight: bold;white-space: nowrap;">End Date:11/15/4434</label>
-                                  </div>                                      
-                                  <div  class="col-lg-4">
-                                        <input type="button" style="margin-left:65px"  class="btn btn-dark" value="Suspend" >
-                                  </div>
-                             </div>                          
+                   
     </div>
 
-    <div class="modal" id="myModal">
-        <div class="modal-dialog">
-          <div class="modal-content">
+ <div class="modal" id="myModal">
+     <div class="modal-dialog">
+       <div class="modal-content">
       
             <!-- Modal Header -->
             <div class="modal-header">
@@ -205,9 +191,9 @@
               <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
             </div>
       
-          </div>
         </div>
-      </div>
+       </div>
+  </div>
     
 </div>
  

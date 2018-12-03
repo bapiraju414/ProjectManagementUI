@@ -10,42 +10,38 @@
      
         <h2>Search</h2>
         <hr class="colorgraph">
-        <div class="row">
-          <div class="col-xs-8 col-sm-4 col-md-4">
-            <div class="form-group">
-              <input type="text" name="task" id="task" class="form-control input-lg" placeholder="Task" tabindex="1">
-            </div>
+        <div class="row mb-4" style="margin:auto;margin-top:10px;margin-left:-100px; width: 1000px; border: 3px solid #008000;padding: 10px;">  
+          <table cellspacing=0 cellpadding=12>
+            <tr>
+                <td>
+                    <label>Project:</label>
+                </td>
+              <td>
+                  <input type="text" class="form-control" placeholder="Search by Project"  id="txtSearch">
+              </td>
+              <td>
+                  <img src="../src/images/Search-icon.png">
+              </td>
+              <td>
+                  <label style="font-weight: bold">Sort By:</label>
+              </td>
+              <td>
+                  <input type="button" class="btn btn-dark" value="First Name" (click)="setOrder('user.firstName')" >  
+              </td>
+              <td>
+                  <input type="button" class="btn btn-dark" value="Last Name" (click)="setOrder('user.lastName')">
+              </td>
+              <td>
+                  <input type="button" class="btn btn-dark" value="Employee ID" (click)="setOrder('user.employeeId')">
+              </td>
+              <td>
+                  <input type="button" class="btn btn-dark" value="Employee ID" (click)="setOrder('user.employeeId')">
+              </td>
+            </tr>
+          </table>                          
+                                 
           </div>
-          <div class="col-xs-8 col-sm-4 col-md-4">
-            <div class="form-group">
-              <input type="text" name="parenttask" id="parenttask" class="form-control input-lg" placeholder="Parent Task" tabindex="2">
-            </div>
-          </div>
-          <div class="col-xs-8 col-sm-4 col-md-4">
-            <div class="form-group">
-              <input type="text" name="priorityfrom" id="priorityfrom" class="form-control input-lg" placeholder="Priority From" tabindex="2">
-            </div>
-          </div>
-        </div>
-        
-        <div class="row">
-          <div class="col-xs-8 col-sm-4 col-md-4">
-            <div class="form-group">
-              <input type="text" name="startdate" id="startdate" class="form-control input-lg" placeholder="Start Date" tabindex="1">
-            </div>
-          </div>
-          <div class="col-xs-8 col-sm-4 col-md-4">
-            <div class="form-group">
-              <input type="text" name="enddate" id="enddate" class="form-control input-lg" placeholder="End Date" tabindex="2">
-            </div>
-          </div>
-          <div class="col-xs-8 col-sm-4 col-md-4">
-            <div class="form-group">
-              <input type="text" name="priorityto" id="priorityto" class="form-control input-lg" placeholder="Priority To" tabindex="2">
-            </div>
-          </div>
-        </div>
-        
+            
       
      
     </div>
@@ -55,7 +51,7 @@
  </div>  
     
 
-<div style="margin-left:-120px" >
+<div style="margin-left:-20px" >
   
   <table class="table table-striped">
     <thead class="thead-dark">

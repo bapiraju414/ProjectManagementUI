@@ -7,6 +7,8 @@ export class Task {
     
     Project_ID:number;
 
+    userId:number;
+
     Parent_Task:string;
   
     TaskName: string;
@@ -18,5 +20,10 @@ export class Task {
     Priority: number;
 
     Status:Number;
-  
+
+    ProjectName:string;
+
+    ParentName:string;
+
+    UserName:string
   }

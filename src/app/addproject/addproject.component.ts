@@ -1,15 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Project} from "../model/project.model";
+import {User} from "../model/user.model";
+import {ProjectmanagerService} from '../projectmanager.service';
 @Component({
   selector: 'app-addproject',
   templateUrl: './addproject.component.html',
   styleUrls: ['./addproject.component.css']
 })
 export class AddprojectComponent implements OnInit {
-
-  constructor() { }
+  project=new Project();
+  users:User[];
+  constructor(private projectmanagerservice:ProjectmanagerService) { }
 
   ngOnInit() {
+    this.projectmanagerservice.getUsers()
+    .subscribe( data => {
+      this.users = data;
+    });      
+ 
   }
 
+  createProject() {
+    // this.projectmanagerservice.createTask(this.task)
+    //   .subscribe( data => {
+        
+    //   });
+    // }
+    alert('Hi');
+  }
 }
