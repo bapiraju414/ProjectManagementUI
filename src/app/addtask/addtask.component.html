@@ -17,7 +17,7 @@
               </span>
           </div>
           <div class="col-lg-3">
-             <img src="../src/images/Search-icon.png" data-toggle="modal" data-target="#myModal">
+             <img src="../src/images/Search-icon.png" data-toggle="modal" data-target="#ProjecttModal">
          </div>
       </div> 
        
@@ -44,7 +44,7 @@
                         <label for="slider1" style="font-weight: bold">Priority:</label>
                    </div>
                    <div class="col-lg-6">
-                    <input id="slider1" type="range"  min="10" max="30" step="5" /> 
+                    <input id="slider1" type="range"  [(ngModel)]="task.Priority" #Priority="ngModel"  name="Priority"  min="10" max="30" step="5" /> 
                    </div>
                </div> 
                           
@@ -56,7 +56,7 @@
                         <input type="text" class="form-control"  id="parenttask">
                    </div>
                    <div class="col-lg-3">
-                      <img src="../src/images/Search-icon.png">
+                      <img src="../src/images/Search-icon.png" data-toggle="modal" data-target="#ParentModal">
                   </div>
                 </div>
               
@@ -95,7 +95,7 @@
                   </span>
              </div>
              <div class="col-lg-3">
-                <img src="../src/images/Search-icon.png">
+                <img src="../src/images/Search-icon.png" data-toggle="modal" data-target="#myModal">
             </div>
           </div>
           <div class="row mb-4" style="padding-left: 360px">
@@ -109,66 +109,7 @@
       </form>
     
   </div>
-  <div  style="margin:auto;margin-top:10px; width: 75%; border: 3px solid #008000;padding: 10px;">
-        <div class="row mb-4" >
-            <div class="col-lg-12">
-                <input type="text" class="form-control" placeholder="Search" id="txtSearch">
-            </div>
-        </div>
-        <div class="row mb-4">
-                <div class="col-lg-2">
-                        <label style="font-weight: bold">Sort By:</label>
-                 </div>
-                 <div class="col-lg-2">
-                        <input type="button" class="btn btn-dark" value="Start Date" >
-                 </div>
-                 <div class="col-lg-2">
-                        <input type="button" class="btn btn-dark" value="End Date" >
-                 </div>
-                 <div class="col-lg-2">
-                        <input type="button" class="btn btn-dark" value="Priority" >
-                 </div>
-                 <div class="col-lg-2">
-                        <input type="button" class="btn btn-dark" value="Completed" >
-                 </div>
-          </div>
-<div style="border: 3px solid #008000;">
-            <div class="row mb-4" style="margin:auto;padding:10px;">
-                    <div class="col-lg-4">
-                       <label style="font-weight: bold">Project:ProjectTest</label>    
-                      
-                     </div>
-                     <div class="col-lg-4">
-                            <label style="font-weight: bold">Priority:{{60}}</label>
-                     </div>
-                     <div class="col-lg-4">
-                            <input type="button" class="btn btn-dark" value="Update" >
-                     </div> 
-                                     
-            </div>
-            <div class="row mb-2" style="margin:auto;padding:10px;">
-                    <div class="col-lg-3">
-                       <label style="font-weight:bold;white-space: nowrap;margin-left:0px">No of Tasks:{{54}}</label>
-                    </div>
-                    <div class="col-lg-3">
-                            <label style="font-weight:bold;white-space: nowrap;margin-left:65px">Completed:{{23}}</label>
-                      </div>
-             </div>  
-             <div class="row mb-2" style="margin:auto;padding:10px;">
-                        <div  class="col-lg-4">
-                           <label style="font-weight: bold;white-space: nowrap;margin-left:0px">Start Date:11/15/4434</label>
-                        </div>
-                        <div  class="col-lg-3">
-                                <label style="font-weight: bold;white-space: nowrap;">End Date:11/15/4434</label>
-                          </div>                                      
-                          <div  class="col-lg-4">
-                                <input type="button" style="margin-left:65px"  class="btn btn-dark" value="Suspend" >
-                          </div>
-                     </div>           
-                       <hr>             
-                   
-    </div>
-
+  
  <div class="modal" id="myModal">
      <div class="modal-dialog">
        <div class="modal-content">
@@ -195,8 +136,58 @@
        </div>
   </div>
     
-</div>
- 
+
+  <div class="modal" id="ParentModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+     
+           <!-- Modal Header -->
+           <div class="modal-header">
+             <h4 class="modal-title">Select Parent Task</h4>
+             <button type="button" class="close" data-dismiss="modal">&times;</button>
+           </div>
+     
+           <!-- Modal body -->
+           <div class="modal-body">
+               <ul *ngFor="let parent of parenttasks" class="list-group">
+                   <li class="list-group-item" (click)="SelectParent(parent)"><label style="display:none">{{parent.Parent_ID}}</label>{{parent.Parent_Task}}</li>                    
+                 </ul> 
+           </div>
+     
+           <!-- Modal footer -->
+           <div class="modal-footer">
+             <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+           </div>
+     
+       </div>
+      </div>
+ </div>
+
+ <div class="modal" id="ProjecttModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+     
+           <!-- Modal Header -->
+           <div class="modal-header">
+             <h4 class="modal-title">Select Projects</h4>
+             <button type="button" class="close" data-dismiss="modal">&times;</button>
+           </div>
+     
+           <!-- Modal body -->
+           <div class="modal-body">
+               <ul *ngFor="let project of projects" class="list-group">
+                   <li class="list-group-item" (click)="SelectProject(project)"><label style="display:none">{{project.Project_ID}}</label>{{project.ProjectName}}</li>                    
+                 </ul> 
+           </div>
+     
+           <!-- Modal footer -->
+           <div class="modal-footer">
+             <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+           </div>
+     
+       </div>
+      </div>
+ </div>
   <!-- Default form contact -->
   
   

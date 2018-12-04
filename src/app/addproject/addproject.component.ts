@@ -20,12 +20,14 @@ export class AddprojectComponent implements OnInit {
  
   }
 
+  SelectUser(user:User){
+    this.project.User_Id = user.userId;
+    this.project.UserName = user.firstName
+ }
   createProject() {
-    // this.projectmanagerservice.createTask(this.task)
-    //   .subscribe( data => {
+    this.projectmanagerservice.createProject(this.project)
+      .subscribe( data => {
         
-    //   });
-    // }
-    alert('Hi');
+      });
   }
 }

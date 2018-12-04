@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {User} from "./model/user.model";
 import {Task} from "./model/task.model";
 import { Project } from 'src/app/model/project.model';
-
+import {ParentTask} from 'src/app/model/parenttask.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,6 +14,10 @@ export class ProjectmanagerService {
 
   getTasks() {
     return this.http.get<Task[]>(this.baseUrl+'/api/GetTasks');
+  }
+
+  getParentTasks() {
+    return this.http.get<ParentTask[]>(this.baseUrl+'/api/GetParentTask');
   }
 
   getTaskById(id: number) {
@@ -56,11 +60,11 @@ export class ProjectmanagerService {
   }
   
   createProject(project: Project) {
-    return this.http.post(this.baseUrl+'/api/AddTask', project);
+    return this.http.post(this.baseUrl+'/api/AddProject', project);
   } 
 
   updateProject(project: Project) {
-    return this.http.put(this.baseUrl +'/api/UpdateTask', project);
+    return this.http.put(this.baseUrl +'/api/UpdateProject', project);
   }
 
   SuspendTProject(id: number) {
