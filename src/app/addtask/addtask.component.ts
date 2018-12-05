@@ -39,28 +39,26 @@ export class AddtaskComponent implements OnInit {
  
 
   SelectUser(user:User){
-     this.project.User_Id = user.userId;
-     this.project.UserName = user.firstName
+     this.task.User_ID = user.userId;
+     this.task.UserName = user.firstName
   }
 
 
   SelectParent(parent:ParentTask){
-    this.project.Parent_ID = parent.Parent_ID;
-    this.project.ParentName = parent.Parent_Task
+    this.task.Parent_ID = parent.Parent_ID;
+    this.task.ParentName = parent.Parent_Task
  }
 
  SelectProject(project:Project){
-  this.project.Project_ID = project.Project_ID;
-  this.project.ProjectName = project.ProjectName;
+  this.task.Project_ID = project.Project_ID;
+  this.task.ProjectName = project.ProjectName;
 }
 
 
   createTask() {
-    // this.projectmanagerservice.createTask(this.task)
-    //   .subscribe( data => {
+    this.projectmanagerservice.createTask(this.task)
+      .subscribe( data => {
         
-    //   });
-    // }
-    alert('Hi');
+      });    
   }
 }

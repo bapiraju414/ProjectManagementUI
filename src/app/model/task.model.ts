@@ -7,7 +7,7 @@ export class Task {
     
     Project_ID:number;
 
-    userId:number;
+    User_ID:number;
 
     Parent_Task:string;
   
