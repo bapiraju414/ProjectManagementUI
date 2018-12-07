@@ -20,6 +20,10 @@ export class ProjectmanagerService {
     return this.http.get<Task[]>(this.baseUrl+'/api/GetTaskDetails');
   }
 
+  GetProjectDetails() {
+    return this.http.get<Project[]>(this.baseUrl+'/api/GetProjectDetails');
+  }
+  
   getParentTasks() {
     return this.http.get<ParentTask[]>(this.baseUrl+'/api/GetParentTask');
   }

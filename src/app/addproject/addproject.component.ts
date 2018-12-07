@@ -10,13 +10,19 @@ import {ProjectmanagerService} from '../projectmanager.service';
 export class AddprojectComponent implements OnInit {
   project=new Project();
   users:User[];
+  projects:Project[];
   constructor(private projectmanagerservice:ProjectmanagerService) { }
 
   ngOnInit() {
     this.projectmanagerservice.getUsers()
     .subscribe( data => {
       this.users = data;
-    });      
+    });
+    
+    this.projectmanagerservice.GetProjectDetails()
+    .subscribe( data => {
+      this.projects = data;
+    }); 
  
   }
 

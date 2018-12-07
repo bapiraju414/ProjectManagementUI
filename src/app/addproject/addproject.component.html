@@ -95,43 +95,43 @@
                         <input type="button" class="btn btn-dark" value="Completed" >
                  </div>
           </div>
-		   <div class="row mb-1" style="margin:auto;padding:10px;">
+		   <div class="row mb-1" *ngFor="let project of projects" style="margin:auto;padding:10px;">
                     <div class="col-lg-4">
-                       <label style="font-weight: bold">Project:ProjectTest</label>    
+                       <label style="font-weight: bold">Project:{{project.ProjectName}}</label>    
                       
                      </div>
                      <div class="col-lg-4">
-                            <label style="font-weight: bold">Priority:{{60}}</label>
+                            <label style="font-weight: bold">Priority:{{project.Priority}}</label>
                      </div>
                      <div class="col-lg-4">
                             <input type="button" class="btn btn-dark" value="Update" >
                      </div> 
-                                     
-            </div>
-			<div class="row mb-2" style="margin:auto;padding:10px;">
-                    <div class="col-lg-3">
-                       <label style="font-weight:bold;white-space: nowrap;margin-left:0px">No of Tasks:{{54}}</label>
-                    </div>
-                    <div class="col-lg-3">
-                            <label style="font-weight:bold;white-space: nowrap;margin-left:65px">Completed:{{23}}</label>
+                     <div class="row mb-2" style="margin:auto;padding:10px;">
+                      <div class="col-lg-3">
+                         <label style="font-weight:bold;white-space: nowrap;margin-left:0px">No of Tasks:{{project.NoofTasks}}</label>
                       </div>
-             </div> 
-			 <div class="row mb-2" style="margin:auto;padding:10px;">
-                        <div  class="col-lg-4">
-                           <label style="font-weight: bold;white-space: nowrap;margin-left:0px">Start Date:11/15/4434</label>
+                      <div class="col-lg-3">
+                              <label style="font-weight:bold;white-space: nowrap;margin-left:65px">Completed:{{project.completedtask}}</label>
                         </div>
-                        <div  class="col-lg-3">
-                                <label style="font-weight: bold;white-space: nowrap;">End Date:11/15/4434</label>
-                          </div>                                      
+               </div> 
+         <div class="row mb-2" style="margin:auto;padding:10px;">
                           <div  class="col-lg-4">
-                                <input type="button" style="margin-left:65px"  class="btn btn-dark" value="Suspend" >
+                             <label style="font-weight: bold;white-space: nowrap;margin-left:0px">Start Date:{{project.Start_Date| date:'shortDate'}}</label>
                           </div>
-                     </div>           
-                       <hr> 
-                         
-                   
-         </div>
-    </div>
+                          <div  class="col-lg-3">
+                                  <label style="font-weight: bold;white-space: nowrap;">End Date:{{project.End_Date| date:'shortDate'}}</label>
+                            </div>                                      
+                            <div  class="col-lg-4">
+                                  <input type="button" style="margin-left:65px"  class="btn btn-dark" value="Suspend" >
+                            </div>
+                       </div>           
+                         <hr> 
+                           
+                     
+           </div>
+      </div>                
+     </div>
+		
         
       <div class="modal" id="myModal">
           <div class="modal-dialog">

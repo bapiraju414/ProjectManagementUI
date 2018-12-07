@@ -33,7 +33,7 @@ export class AddtaskComponent implements OnInit {
       this.projectmanagerservice.getProjects()
       .subscribe( data => {
         this.projects = data;
-      });  
+      });       
    
   }
  
