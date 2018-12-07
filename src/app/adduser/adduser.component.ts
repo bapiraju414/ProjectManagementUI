@@ -17,6 +17,7 @@ export class AdduserComponent implements OnInit {
   order: string = 'user.firstName';
   reverse: boolean = false;
   userFilter: any = {firstName: '' };
+  form:NgForm;
   constructor(private orderPipe: OrderPipe,private filterPipe: FilterPipe,private projectmanagerservice:ProjectmanagerService) { }
 
   ngOnInit() {
@@ -30,8 +31,8 @@ export class AdduserComponent implements OnInit {
     
   }
 
-  resetForm(form:NgForm) {
-    form.reset();
+  resetForm() {
+    this.form.reset();
   }
 
   createUser() {

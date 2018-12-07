@@ -8,5 +8,7 @@ export class Project{
     Parent_ID:number;
     User_Id:number;
     ParentName:string;
-    UserName:string
+    UserName:string;
+    NoofTasks:number;
+    
 }

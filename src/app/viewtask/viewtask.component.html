@@ -20,22 +20,22 @@
                   <input type="text" class="form-control" placeholder="Search by Project"  id="txtSearch">
               </td>
               <td>
-                  <img src="../src/images/Search-icon.png">
+                <img src="../src/images/Search-icon.png" data-toggle="modal" data-target="#ProjecttModal">
               </td>
               <td>
                   <label style="font-weight: bold">Sort By:</label>
               </td>
               <td>
-                  <input type="button" class="btn btn-dark" value="First Name" (click)="setOrder('user.firstName')" >  
+                  <input type="button" class="btn btn-dark" value="First Name">  
               </td>
               <td>
-                  <input type="button" class="btn btn-dark" value="Last Name" (click)="setOrder('user.lastName')">
+                  <input type="button" class="btn btn-dark" value="Last Name" >
               </td>
               <td>
-                  <input type="button" class="btn btn-dark" value="Employee ID" (click)="setOrder('user.employeeId')">
+                  <input type="button" class="btn btn-dark" value="Employee ID">
               </td>
               <td>
-                  <input type="button" class="btn btn-dark" value="Employee ID" (click)="setOrder('user.employeeId')">
+                  <input type="button" class="btn btn-dark" value="Employee ID">
               </td>
             </tr>
           </table>                          
@@ -67,17 +67,43 @@
     </tr>
     </thead>
     <tbody>
-    <tr class="table-success">
-      <td style="visibility:hidden">1</td>
-      <td>Task_Name</td>
-      <td>Parent_Task</td>
-      <td>task.priority</td>
-      <td>2432</td>
-      <td>245</td>
-      <td><button class="btn btn-dark" (click)="editTask(task)"> Edit</button></td>
-      <td><button class="btn btn-dark" (click)="endTask(task)" style="margin-left: 20px;"> End Task</button></td>
-    </tr>
+      <tr *ngFor="let task of tasks" class="table-success">
+        <td style="visibility:hidden">{{task.Task_ID}}</td>
+        <td>{{task.TaskName}}</td>
+        <td>{{task.Parent_Task}}</td>
+        <td>{{task.Priority}}</td>
+        <td>{{task.Start_Date| date:'shortDate'}}</td>
+        <td>{{task.End_Date| date:'shortDate'}}</td>
+        <td><button class="btn btn-dark" (click)="editTask(task)"> Edit</button></td>
+        <td><button class="btn btn-dark" (click)="endTask(task)" style="margin-left: 20px;"> End Task</button></td>
+      </tr>
     </tbody>
   </table>
 </div>
 
+
+<div class="modal" id="ProjecttModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+   
+         <!-- Modal Header -->
+         <div class="modal-header">
+           <h4 class="modal-title">Select Projects</h4>
+           <button type="button" class="close" data-dismiss="modal">&times;</button>
+         </div>
+   
+         <!-- Modal body -->
+         <div class="modal-body">
+             <ul *ngFor="let project of projects" class="list-group">
+                 <li class="list-group-item" (click)="SelectProject(project)"><label style="display:none">{{project.Project_ID}}</label>{{project.ProjectName}}</li>                    
+               </ul> 
+         </div>
+   
+         <!-- Modal footer -->
+         <div class="modal-footer">
+           <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+         </div>
+   
+     </div>
+    </div>
+</div>

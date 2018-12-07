@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Task} from "../model/task.model";
+import {ProjectmanagerService} from '../projectmanager.service';
 
 @Component({
   selector: 'app-viewtask',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewtaskComponent implements OnInit {
 
-  constructor() { }
+  tasks:Task[];
+  projects:any;
+  constructor(private projectmanagerservice:ProjectmanagerService) { }
 
   ngOnInit() {
+    this.projectmanagerservice.GetTaskDetails()
+    .subscribe( data => {
+      this.tasks = data;
+    });  
+
+    this.projectmanagerservice.getProjects()
+    .subscribe( data => {
+      this.projects = data;
+    });  
+    
   }
 
 }
