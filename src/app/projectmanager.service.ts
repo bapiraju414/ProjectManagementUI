@@ -29,7 +29,7 @@ export class ProjectmanagerService {
   }
 
   getTaskById(id: number) {
-    return this.http.get<Task>(this.baseUrl + '/api/GetTaskyByID/' + id);
+    return this.http.get<Task>(this.baseUrl + '/api/GetTasksById/' + id);
   }
   
   createTask(task: Task) {
@@ -48,6 +48,10 @@ export class ProjectmanagerService {
     return this.http.post(this.baseUrl+'/api/AddUser', user);
   }
 
+  updateUser(user: User) {
+    return this.http.put(this.baseUrl +'/api/UpdateUser', user);
+  }
+
   getUsers() {
     return this.http.get<User[]>(this.baseUrl+'/api/GetUsers');
   }
@@ -56,7 +60,7 @@ export class ProjectmanagerService {
     return this.http.get<User>(this.baseUrl + '/api/GetUserById/' + id);
   }
   deleteUserById(id: number) {
-    return this.http.delete(this.baseUrl + '/' + id);
+    return this.http.delete(this.baseUrl + '/api/DeleteUser/' + id);
   }
 
   getProjects() {

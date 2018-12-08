@@ -4,6 +4,7 @@ import {Project} from "../model/project.model";
 import {Task} from "../model/task.model";
 import {ProjectmanagerService} from '../projectmanager.service';
 import {ParentTask} from 'src/app/model/parenttask.model';
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-addtask',
   templateUrl: './addtask.component.html',
@@ -17,9 +18,21 @@ export class AddtaskComponent implements OnInit {
   users:User[];
   parenttasks:any[];
   projects:any[];
-  constructor(private projectmanagerservice:ProjectmanagerService) { }
+  addorupdate: string ='Add';
+  constructor(private router: Router,private projectmanagerservice:ProjectmanagerService) { }
  
   ngOnInit() {
+    let taskId = localStorage.getItem("editTaskid");
+    if(taskId!=null)
+    {
+      this.addorupdate ="Update";
+      this.GetTaskbyId(taskId);
+      localStorage.removeItem("editTaskid");
+    }
+    else{
+      this.addorupdate ="Add";
+    }
+  
     this.projectmanagerservice.getUsers()
       .subscribe( data => {
         this.users = data;
@@ -37,6 +50,15 @@ export class AddtaskComponent implements OnInit {
    
   }
  
+  GetTaskbyId(taskid) {    
+    this.projectmanagerservice.getTaskById(taskid)
+      .subscribe( data => {
+        this.task.TaskName = data.TaskName;
+        this.task.Priority = data.Priority;
+        this.task.Start_Date = data.Start_Date.split('T')[0];
+        this.task.End_Date = data.End_Date.split('T')[0];
+      });
+    }
 
   SelectUser(user:User){
      this.task.User_ID = user.userId;
@@ -56,9 +78,24 @@ export class AddtaskComponent implements OnInit {
 
 
   createTask() {
-    this.projectmanagerservice.createTask(this.task)
+    if( this.addorupdate =="Update")
+    {
+      this.updateTask();
+
+    }
+    else
+    {
+      this.projectmanagerservice.createTask(this.task)
       .subscribe( data => {
         
+      }); 
+    }   
+  }
+
+  updateTask() {
+    this.projectmanagerservice.updateTask(this.task)
+      .subscribe( data => {
+        this.router.navigate(['ViewTask']);
       });    
   }
 }

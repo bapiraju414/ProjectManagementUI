@@ -45,7 +45,7 @@
           
           <div class="row mb-4" style="padding-left: 360px">
             <div class="col-lg-3 col-lg-offset-3">
-              <input type="submit" value="Add" class="btn btn-dark">
+              <input type="submit" value={{this.addorupdate}} class="btn btn-dark">
             </div>
             <div class="col-lg-3 col-lg-offset-3">
               <button type="reset" class="btn btn-dark" (click)="resetForm()">Reset</button>
@@ -87,7 +87,7 @@
                 <div class="col-lg-6" style="background-color:rgb(166, 170, 214);margin-left:10px">
                 <label style="font-weight: bold">{{user.lastName}}</label>
                 </div> 
-                <div class="col-lg-4"><input type="button" class="btn btn-dark" value="Delete" (click)="DeleteUser(user.userId)"></div>
+                <div class="col-lg-4"><input type="button" class="btn btn-dark" value="Delete" (click)="deleteUser(user)"></div>
             </div>
             <div class="row mb-2"> 
                 <div class="col-lg-6" style="background-color:rgb(82, 78, 105);margin-left:10px">

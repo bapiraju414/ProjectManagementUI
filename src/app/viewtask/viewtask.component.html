@@ -17,7 +17,7 @@
                     <label>Project:</label>
                 </td>
               <td>
-                  <input type="text" class="form-control" placeholder="Search by Project"  id="txtSearch">
+                  <input type="text" class="form-control"   [(ngModel)]="task.ProjectName" placeholder="Search by Project"  id="txtSearch">
               </td>
               <td>
                 <img src="../src/images/Search-icon.png" data-toggle="modal" data-target="#ProjecttModal">
@@ -26,16 +26,16 @@
                   <label style="font-weight: bold">Sort By:</label>
               </td>
               <td>
-                  <input type="button" class="btn btn-dark" value="First Name">  
+                  <input type="button" class="btn btn-dark" value="Start Date">  
               </td>
               <td>
-                  <input type="button" class="btn btn-dark" value="Last Name" >
+                  <input type="button" class="btn btn-dark" value="End Date" >
               </td>
               <td>
-                  <input type="button" class="btn btn-dark" value="Employee ID">
+                  <input type="button" class="btn btn-dark" value="Priority">
               </td>
               <td>
-                  <input type="button" class="btn btn-dark" value="Employee ID">
+                  <input type="button" class="btn btn-dark" value="Completed">
               </td>
             </tr>
           </table>                          

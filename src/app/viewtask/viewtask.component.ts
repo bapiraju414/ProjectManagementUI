@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Task} from "../model/task.model";
 import {ProjectmanagerService} from '../projectmanager.service';
+import {Project} from "../model/project.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-viewtask',
@@ -10,8 +12,11 @@ import {ProjectmanagerService} from '../projectmanager.service';
 export class ViewtaskComponent implements OnInit {
 
   tasks:Task[];
-  projects:any;
-  constructor(private projectmanagerservice:ProjectmanagerService) { }
+  projects:Project[];
+  task = new Task();;
+  project:Project;
+
+  constructor(private router: Router,private projectmanagerservice:ProjectmanagerService) { }
 
   ngOnInit() {
     this.projectmanagerservice.GetTaskDetails()
@@ -25,5 +30,17 @@ export class ViewtaskComponent implements OnInit {
     });  
     
   }
+
+  SelectProject(project:Project){
+    this.task.Project_ID = project.Project_ID;
+    this.task.ProjectName = project.ProjectName;
+  }
+  
+  editTask(task: any): void {
+    localStorage.removeItem("editTaskid");
+    localStorage.setItem("editTaskid", task.Task_ID.toString());
+    this.router.navigate(['AddTask']);
+  };
+
 
 }

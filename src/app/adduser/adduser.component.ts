@@ -18,13 +18,12 @@ export class AdduserComponent implements OnInit {
   reverse: boolean = false;
   userFilter: any = {firstName: '' };
   form:NgForm;
+  addorupdate: string ='Add';
   constructor(private orderPipe: OrderPipe,private filterPipe: FilterPipe,private projectmanagerservice:ProjectmanagerService) { }
 
   ngOnInit() {
-    this.projectmanagerservice.getUsers()
-      .subscribe( data => {
-        this.users = data;
-      });
+    this.addorupdate="Add";
+    this.getUser();
       
   }
   onSubmit() {
@@ -35,13 +34,41 @@ export class AdduserComponent implements OnInit {
     this.form.reset();
   }
 
+  getUser(){
+    this.projectmanagerservice.getUsers()
+    .subscribe( data => {
+      this.users = data;
+    });
+  }
+
+  deleteUser(user:User){
+    this.projectmanagerservice.deleteUserById(user.userId)
+    .subscribe( data => { 
+      this.getUser()    
+    });
+   
+  }
   createUser() {
-    this.projectmanagerservice.createUser(this.user)
-      .subscribe( data => {
-        
-      });
+    if(this.addorupdate == "Add")
+    {
+      this.projectmanagerservice.createUser(this.user)
+      .subscribe( data => { 
+        this.getUser()       
+      });     
+      
     }
+    else
+    {
+      this.projectmanagerservice.updateUser(this.user)
+      .subscribe( data => {  
+       this.getUser();      
+      });
+    
+    }
+    
+  }
     EditUser(user:User) {
+      this.addorupdate="Upadte";
       this.projectmanagerservice.getUserById(user.userId)
         .subscribe( data => {
           this.user = data;
@@ -51,10 +78,7 @@ export class AdduserComponent implements OnInit {
       setOrder(value: string) {
         if (this.order === value) {
           this.reverse = !this.reverse;
-        }
-        // console.log(this.users);
-        // this.orderPipe.transform(this.users, 'user.firstName');
-        // console.log(this.users);
+        }        
         this.order = value;
       }
 }
