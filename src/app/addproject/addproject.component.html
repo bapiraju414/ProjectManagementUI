@@ -27,10 +27,10 @@
             </div> 
             <div class="row mb-4" style="margin-left:250px"> 
                 <div class="col-lg-4" style="margin-left:-25px">
-                    <input  type="text" style="width:175px" onfocus="(this.type='date')" [(ngModel)]="project.Start_Date" #Start_Date="ngModel"  name="Start_Date" placeholder="Start Date" class="form-control" id="startdate">
+                    <input  type="text" style="width:175px" onfocus="(this.type='date')" [ngModel]="project.Start_Date|date:'yyyy-MM-dd'" (ngModelChange)="project.Start_Date=$event" #Start_Date="ngModel"  name="Start_Date" placeholder="Start Date" class="form-control" id="startdate">
                </div>
                <div class="col-lg-4" style="margin-left:10px">
-                <input  type="text" style="width:175px" onfocus="(this.type='date')"  [(ngModel)]="project.End_Date" #End_Date="ngModel"  name="End_Date" placeholder="End Date"class="form-control"  id="enddate">
+                <input  type="text" style="width:175px" onfocus="(this.type='date')"  [ngModel]="project.End_Date|date:'yyyy-MM-dd'" (ngModelChange)="project.Start_Date=$event" #End_Date="ngModel"  name="End_Date" placeholder="End Date"class="form-control"  id="enddate">
               </div>
             </div>
                
@@ -95,41 +95,45 @@
                         <input type="button" class="btn btn-dark" value="Completed" >
                  </div>
           </div>
-		   <div class="row mb-1" *ngFor="let project of projects" style="margin:auto;padding:10px;">
+          <div  *ngFor="let project of projects" style="margin:auto;padding:10px;">
+              <div class="row mb-1" style="margin:auto;padding:10px;">
+                  <div class="col-lg-4">
+                     <label style="font-weight: bold">Project:</label>   {{project.ProjectName}}    
+                    <span style="display:none">{{project.Project_ID}} </span>
+                   </div>
+                   <div class="col-lg-4">
+                          <label style="font-weight: bold">Priority:</label>  {{project.Priority}}
+                   </div>
+                   <div class="col-lg-4">
+                          <input type="button" class="btn btn-dark" value="Update" >
+                   </div> 
+                </div> 	
+                   
+                <div class="row mb-1" style="margin:auto;padding:10px;">
+                    <div class="col-lg-3">
+                      <label style="font-weight:bold;white-space: nowrap;margin-left:0px">No of Tasks:</label>  {{project.NoofTasks}}
+                    </div>
                     <div class="col-lg-4">
-                       <label style="font-weight: bold">Project:{{project.ProjectName}}</label>    
-                      
-                     </div>
-                     <div class="col-lg-4">
-                            <label style="font-weight: bold">Priority:{{project.Priority}}</label>
-                     </div>
-                     <div class="col-lg-4">
-                            <input type="button" class="btn btn-dark" value="Update" >
-                     </div> 
-                     <div class="row mb-2" style="margin:auto;padding:10px;">
-                      <div class="col-lg-3">
-                         <label style="font-weight:bold;white-space: nowrap;margin-left:0px">No of Tasks:{{project.NoofTasks}}</label>
+                            <label style="font-weight:bold;white-space: nowrap;margin-left:65px">Completed:</label>  {{project.completedtask}} 
                       </div>
-                      <div class="col-lg-3">
-                              <label style="font-weight:bold;white-space: nowrap;margin-left:65px">Completed:{{project.completedtask}}</label>
-                        </div>
-               </div> 
-         <div class="row mb-2" style="margin:auto;padding:10px;">
-                          <div  class="col-lg-4">
-                             <label style="font-weight: bold;white-space: nowrap;margin-left:0px">Start Date:{{project.Start_Date| date:'shortDate'}}</label>
-                          </div>
-                          <div  class="col-lg-3">
-                                  <label style="font-weight: bold;white-space: nowrap;">End Date:{{project.End_Date| date:'shortDate'}}</label>
-                            </div>                                      
-                            <div  class="col-lg-4">
-                                  <input type="button" style="margin-left:65px"  class="btn btn-dark" value="Suspend" >
-                            </div>
-                       </div>           
-                         <hr> 
+              </div> 	
+              <div class="row mb-1" style="margin:auto;padding:10px;">
+                  <div  class="col-lg-4">
+                      <label style="font-weight: bold;white-space: nowrap;margin-left:0px">Start Date:</label>   {{project.Start_Date| date:'shortDate'}}
+                   </div>
+                   <div  class="col-lg-3">
+                           <label style="font-weight: bold;white-space: nowrap;">End Date:</label>   {{project.End_Date| date:'shortDate'}}
+                     </div>                                      
+                     <div  class="col-lg-4">
+                           <input type="button" style="margin-left:65px"  class="btn btn-dark" value="Suspend" >
+                     </div>
+              </div>
+                <hr style="height:1px;border:none;color:#333;background-color:#333;">
+          </div>
                            
                      
-           </div>
-      </div>                
+           
+                  
      </div>
 		
         

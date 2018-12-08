@@ -24,6 +24,10 @@ export class AddprojectComponent implements OnInit {
       this.projects = data;
     }); 
  
+    this.project.Start_Date =new Date();
+    let tmpDate = new Date();
+    tmpDate.setDate(tmpDate.getDate() + 1);
+    this.project.End_Date =tmpDate;
   }
 
   SelectUser(user:User){
