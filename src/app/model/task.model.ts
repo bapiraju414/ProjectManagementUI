@@ -1,7 +1,7 @@
 export class Task {
 
 
-    TaskId: number;
+   Task_ID: number;
   
     Parent_ID: number;
     

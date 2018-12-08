@@ -65,7 +65,7 @@
                      <label for="startdate" style="font-weight: bold">Start Date:</label>
                 </div>
                 <div class="col-lg-6">
-                     <input type="date" class="form-control" [(ngModel)]="task.Start_Date" #Start_Date="ngModel"  required name="Start_Date"  id="startdate">
+                     <input type="date" class="form-control" [ngModel]="task.Start_Date|date:'yyyy-MM-dd'" (ngModelChange)="task.Start_Date=$event" #Start_Date="ngModel"  required name="Start_Date"  id="startdate">
                      <span class="help-block" *ngIf="Start_Date.errors?.required && f.submitted">
                         Start_Date is required
                     </span>
@@ -78,7 +78,7 @@
                    <label for="enddate" style="font-weight: bold">End Date:</label>
               </div>
               <div class="col-lg-6">
-                   <input type="date" class="form-control"  [(ngModel)]="task.End_Date" #End_Date="ngModel"  required name="End_Date"  id="enddate">
+                   <input type="date" class="form-control"  [ngModel]="task.End_Date|date:'yyyy-MM-dd'" (ngModelChange)="task.End_Date=$event" #End_Date="ngModel"  required name="End_Date"  id="enddate">
                    <span class="help-block" *ngIf="End_Date.errors?.required && f.submitted">
                       End_Date is required
                   </span>

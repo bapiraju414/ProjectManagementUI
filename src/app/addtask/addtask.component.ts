@@ -31,6 +31,10 @@ export class AddtaskComponent implements OnInit {
     }
     else{
       this.addorupdate ="Add";
+      this.task.Start_Date =new Date();
+      let tmpDate = new Date();
+      tmpDate.setDate(tmpDate.getDate() + 1);
+      this.task.End_Date =tmpDate;
     }
   
     this.projectmanagerservice.getUsers()
@@ -53,10 +57,11 @@ export class AddtaskComponent implements OnInit {
   GetTaskbyId(taskid) {    
     this.projectmanagerservice.getTaskById(taskid)
       .subscribe( data => {
+        this.task.Task_ID = data.Task_ID;
         this.task.TaskName = data.TaskName;
         this.task.Priority = data.Priority;
-        this.task.Start_Date = data.Start_Date.split('T')[0];
-        this.task.End_Date = data.End_Date.split('T')[0];
+        this.task.Start_Date =  data.Start_Date; 
+        this.task.End_Date = data.End_Date;
       });
     }
 
@@ -87,7 +92,7 @@ export class AddtaskComponent implements OnInit {
     {
       this.projectmanagerservice.createTask(this.task)
       .subscribe( data => {
-        
+        this.router.navigate(['ViewTask']);
       }); 
     }   
   }
