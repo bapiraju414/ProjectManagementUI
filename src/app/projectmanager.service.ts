@@ -69,7 +69,7 @@ export class ProjectmanagerService {
   }
 
   getProjectsById(id: number) {
-    return this.http.get<Task>(this.baseUrl + '/api/GetTaskyByID/' + id);
+    return this.http.get<Project>(this.baseUrl + '/api/GetProjectById/' + id);
   }
   
   createProject(project: Project) {

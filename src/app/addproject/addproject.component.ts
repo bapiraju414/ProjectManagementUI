@@ -11,19 +11,19 @@ export class AddprojectComponent implements OnInit {
   project=new Project();
   users:User[];
   projects:Project[];
+  addorupdate: string ='Add';
+  StartEndDateSelected: boolean;
   constructor(private projectmanagerservice:ProjectmanagerService) { }
 
   ngOnInit() {
+    this.addorupdate="Add";
     this.projectmanagerservice.getUsers()
     .subscribe( data => {
       this.users = data;
     });
+
+      this.getProjectDetails();
     
-    this.projectmanagerservice.GetProjectDetails()
-    .subscribe( data => {
-      this.projects = data;
-    }); 
- 
     this.project.Start_Date =new Date();
     let tmpDate = new Date();
     tmpDate.setDate(tmpDate.getDate() + 1);
@@ -34,10 +34,40 @@ export class AddprojectComponent implements OnInit {
     this.project.User_Id = user.userId;
     this.project.UserName = user.firstName
  }
+
+  getProjectDetails(){
+
+    this.projectmanagerservice.GetProjectDetails()
+    .subscribe( data => {
+      this.projects = data;
+    }); 
+ 
+
+  }
   createProject() {
+    if(this.addorupdate == "Add")
+    {
     this.projectmanagerservice.createProject(this.project)
       .subscribe( data => {
-        
+         this.getProjectDetails();
       });
+    }
+    else
+    {
+
+      this.projectmanagerservice.updateProject(this.project)
+      .subscribe( data => {
+        this.getProjectDetails();
+      });
+    }
+    
   }
+
+  EditProject(project:Project) {
+    this.addorupdate="Upadte";
+    this.projectmanagerservice.getProjectsById(project.Project_ID)
+      .subscribe( data => {
+        this.project = data;
+      });
+    }
 }

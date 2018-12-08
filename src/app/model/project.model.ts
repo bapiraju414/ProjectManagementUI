@@ -10,5 +10,5 @@ export class Project{
     ParentName:string;
     UserName:string;
     NoofTasks:number;
-    
+   
 }
