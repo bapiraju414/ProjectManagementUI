@@ -10,8 +10,8 @@ import {ParentTask} from 'src/app/model/parenttask.model';
 export class ProjectmanagerService {
 
   constructor(private http: HttpClient) { }
-  //baseUrl: string = 'http://localhost/ProjectManager.ServiceLayer';
-  baseUrl: string = ' http://localhost:54141';
+  baseUrl: string = 'http://localhost/ProjectManager.ServiceLayer';
+ // baseUrl: string = ' http://localhost:54141';
  
   getTasks() {
     return this.http.get<Task[]>(this.baseUrl+'/api/GetTasks');
