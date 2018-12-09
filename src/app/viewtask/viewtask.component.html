@@ -67,7 +67,7 @@
     </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let task of filteredList" class="table-success">
+      <tr *ngFor="let task of filteredList | orderBy: order:reverse:'case-insensitive'" class="table-success">
         <td >{{task.Task_ID}}</td>
         <td>{{task.TaskName}}</td>
         <td>{{task.Parent_Task}}</td>

@@ -19,7 +19,7 @@ export class Task {
 
     Priority: number;
 
-    Status:Number;
+    Status:boolean;
 
     ProjectName:string;
 

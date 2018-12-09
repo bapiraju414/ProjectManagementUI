@@ -55,24 +55,23 @@ export class ViewtaskComponent implements OnInit {
     this.router.navigate(['AddTask']);
   };
 
+  endTask(task: Task): void {
+    task.Status=true;
+    this.projectmanagerservice.updateTask(task)
+      .subscribe( data => {
+        this.router.navigate(['ViewTask']);
+      }); 
+  };
+
   assignCopy() {
     this.filteredList = Object.assign([], this.tasks);   
   }
 
   setOrder(value: string) {
-    if (value == 'user.task.Start_Date') {
-
-      this.filteredList.sort((a, b) => {
-
-        if (a.Start_Date < b.Start_Date) return -1;
-
-        else if (a.Start_Date > b.Start_Date) return 1;
-
-        else return 0;
-
-      });
-
-    }
+    if (this.order === value) {
+      this.reverse = !this.reverse;
+    }        
+    this.order = value;
   }
 
 }

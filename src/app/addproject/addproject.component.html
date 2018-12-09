@@ -22,15 +22,15 @@
                   <label style="font-weight: bold;padding-left:5px">Set Start and End Date:</label>
                 </div>
                 <div class="col-lg-1" style="margin-left:-45px">
-                    <input id="setdate" type="checkbox" /> 
+                    <input id="setdate" type="checkbox" (change)="EnableDates()" /> 
                 </div>               
             </div> 
             <div class="row mb-4" style="margin-left:250px"> 
                 <div class="col-lg-4" style="margin-left:-25px">
-                    <input  type="text" style="width:175px" onfocus="(this.type='date')" [ngModel]="project.Start_Date|date:'yyyy-MM-dd'" (ngModelChange)="project.Start_Date=$event" #Start_Date="ngModel"  name="Start_Date" placeholder="Start Date" class="form-control" id="startdate">
+                    <input  type="text" style="width:175px"  [disabled]="disabledate" onfocus="(this.type='date')" [ngModel]="project.Start_Date|date:'yyyy-MM-dd'" (ngModelChange)="project.Start_Date=$event" #Start_Date="ngModel"  name="Start_Date" placeholder="Start Date" class="form-control" id="startdate">
                </div>
                <div class="col-lg-4" style="margin-left:10px">
-                <input  type="text" style="width:175px" onfocus="(this.type='date')"  [ngModel]="project.End_Date|date:'yyyy-MM-dd'" (ngModelChange)="project.Start_Date=$event" #End_Date="ngModel"  name="End_Date" placeholder="End Date"class="form-control"  id="enddate">
+                <input  type="text" style="width:175px" [disabled]="disabledate"  onfocus="(this.type='date')"  [ngModel]="project.End_Date|date:'yyyy-MM-dd'" (ngModelChange)="project.Start_Date=$event" #End_Date="ngModel"  name="End_Date" placeholder="End Date"class="form-control"  id="enddate">
               </div>
             </div>
                
@@ -105,7 +105,7 @@
                           <label style="font-weight: bold">Priority:</label>  {{project.Priority}}
                    </div>
                    <div class="col-lg-4">
-                          <input type="button" class="btn btn-dark" (click)=EditProject(project) value="Edit" >
+                          <input type="button" class="btn btn-dark" [disabled]="project.Status" (click)=EditProject(project) value="Edit" >
                    </div> 
                 </div> 	
                    
@@ -125,7 +125,7 @@
                            <label style="font-weight: bold;white-space: nowrap;">End Date:</label>   {{project.End_Date| date:'shortDate'}}
                      </div>                                      
                      <div  class="col-lg-4">
-                           <input type="button" style="margin-left:65px"  class="btn btn-dark" value="Suspend" >
+                           <input type="button" style="margin-left:65px" [disabled]="project.Status" (click)="suspendendProject(project)" class="btn btn-dark" value="Suspend" >
                      </div>
               </div>
                 <hr style="height:1px;border:none;color:#333;background-color:#333;">

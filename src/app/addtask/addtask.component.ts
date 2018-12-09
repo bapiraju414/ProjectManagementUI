@@ -19,7 +19,7 @@ export class AddtaskComponent implements OnInit {
   parenttasks:any[];
   projects:any[];
   addorupdate: string ='Add'; 
-  
+  disableparenttask:boolean;
 
   constructor(private router: Router,private projectmanagerservice:ProjectmanagerService) { }
  
@@ -37,6 +37,7 @@ export class AddtaskComponent implements OnInit {
       let tmpDate = new Date();
       tmpDate.setDate(tmpDate.getDate() + 1);
       this.task.End_Date =tmpDate;
+      this.disableparenttask=true;
     }
   
     this.projectmanagerservice.getUsers()
@@ -74,8 +75,11 @@ export class AddtaskComponent implements OnInit {
 
 
   SelectParent(parent:ParentTask){
-    this.task.Parent_ID = parent.Parent_ID;
-    this.task.ParentName = parent.Parent_Task
+    if(!this.disableparenttask)
+    {
+      this.task.Parent_ID = parent.Parent_ID;
+      this.task.ParentName = parent.Parent_Task;
+    }
  }
 
  SelectProject(project:Project){
@@ -83,6 +87,17 @@ export class AddtaskComponent implements OnInit {
   this.task.ProjectName = project.ProjectName;
 }
 
+EnableParentTask(){
+  if(this.disableparenttask)
+  {
+    this.disableparenttask=false;  
+  }   
+  else
+  {
+    this.disableparenttask=true;       
+  }
+
+}
 
   createTask() {
     if( this.addorupdate =="Update")

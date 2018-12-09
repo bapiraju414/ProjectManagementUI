@@ -34,7 +34,7 @@
               </div>
               <div class="row mb-4" style="padding-left: 140px">
                   <div class="col-lg-3" style="margin-left:180px;">
-                      <input type="checkbox" id="checkbox_id" style="font-weight: bold"/>
+                      <input type="checkbox" (change)="EnableParentTask()" id="checkbox_id" style="font-weight: bold"/>
                       <label for="checkbox_id"><label style="font-weight: bold;margin-left:20px" for="checkbox_id">Parent Task</label></label>
                  </div>
               </div> 
@@ -53,10 +53,10 @@
                             <label for="parenttask" style="font-weight: bold">Parent Task</label>
                      </div> 
                      <div class="col-lg-6">
-                        <input type="text" class="form-control" [(ngModel)]="task.ParentName" #ParentName="ngModel"  name="ParentName"  id="parenttask">
+                        <input type="text" class="form-control" [disabled]="disableparenttask" [(ngModel)]="task.ParentName" #ParentName="ngModel"  name="ParentName"  id="parenttask">
                    </div>
                    <div class="col-lg-3">
-                      <img src="../src/images/Search-icon.png" data-toggle="modal" data-target="#ParentModal">
+                      <img src="../src/images/Search-icon.png"  data-toggle="modal" data-target="#ParentModal">
                   </div>
                 </div>
               
@@ -65,7 +65,7 @@
                      <label for="startdate" style="font-weight: bold">Start Date:</label>
                 </div>
                 <div class="col-lg-6">
-                     <input type="date" class="form-control" [ngModel]="task.Start_Date|date:'yyyy-MM-dd'" (ngModelChange)="task.Start_Date=$event" #Start_Date="ngModel"  required name="Start_Date"  id="startdate">
+                     <input type="date" class="form-control"  [ngModel]="task.Start_Date|date:'yyyy-MM-dd'" (ngModelChange)="task.Start_Date=$event" #Start_Date="ngModel"  required name="Start_Date"  id="startdate">
                      <span class="help-block" *ngIf="Start_Date.errors?.required && f.submitted">
                         Start_Date is required
                     </span>

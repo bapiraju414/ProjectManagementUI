@@ -13,7 +13,7 @@ export class AddprojectComponent implements OnInit {
   users:User[];
   projects:Project[];
   addorupdate: string ='Add';
-  StartEndDateSelected: boolean;
+  disabledate: boolean;
   order: string = 'project.ProjectName';
   reverse: boolean = false;
   ProjectFilter: any = {ProjectName: '' };
@@ -21,6 +21,7 @@ export class AddprojectComponent implements OnInit {
 
   ngOnInit() {
     this.addorupdate="Add";
+    this.disabledate=true;
     this.projectmanagerservice.getUsers()
     .subscribe( data => {
       this.users = data;
@@ -28,10 +29,7 @@ export class AddprojectComponent implements OnInit {
 
       this.getProjectDetails();
     
-    this.project.Start_Date =new Date();
-    let tmpDate = new Date();
-    tmpDate.setDate(tmpDate.getDate() + 1);
-    this.project.End_Date =tmpDate;
+  
   }
 
   SelectUser(user:User){
@@ -67,6 +65,13 @@ export class AddprojectComponent implements OnInit {
     
   }
 
+  suspendendProject(project: Project): void {
+    project.Status=true;
+    this.projectmanagerservice.updateProject(project)
+      .subscribe( data => {       
+      }); 
+  };
+
   EditProject(project:Project) {
     this.addorupdate="Upadte";
     this.projectmanagerservice.getProjectsById(project.Project_ID)
@@ -74,7 +79,25 @@ export class AddprojectComponent implements OnInit {
         this.project = data;
       });
     }
+    EnableDates(){
+      if(this.disabledate)
+      {
 
+        this.disabledate=false;
+        this.project.Start_Date =new Date();
+        let tmpDate = new Date();
+        tmpDate.setDate(tmpDate.getDate() + 1);
+        this.project.End_Date =tmpDate;
+      }   
+      else
+      {
+        this.disabledate=true;
+        this.project.Start_Date =null;        
+        this.project.End_Date =null;
+        
+      }
+
+    }
     setOrder(value: string) {
       if (this.order === value) {
         this.reverse = !this.reverse;
