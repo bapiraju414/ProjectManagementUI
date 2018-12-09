@@ -17,6 +17,8 @@ export class AddprojectComponent implements OnInit {
   order: string = 'project.ProjectName';
   reverse: boolean = false;
   ProjectFilter: any = {ProjectName: '' };
+  error:any={isError:false,errorMessage:''};
+
   constructor(private orderPipe: OrderPipe,private projectmanagerservice:ProjectmanagerService) { }
 
   ngOnInit() {
@@ -37,6 +39,17 @@ export class AddprojectComponent implements OnInit {
     this.project.UserName = user.firstName
  }
 
+ compareTwoDates(){
+   let startdate= Date.parse(this.project.Start_Date.toLocaleString().split(',')[0]);
+   let enddate= Date.parse(this.project.End_Date.toLocaleString().split(',')[0]);
+  if(enddate < startdate){
+     this.error={isError:true,errorMessage:'End Date cant before Start date'};
+  }
+  else{
+
+    this.error={isError:false,errorMessage:''};
+  }
+}
   getProjectDetails(){
 
     this.projectmanagerservice.GetProjectDetails()

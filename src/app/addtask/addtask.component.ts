@@ -20,7 +20,9 @@ export class AddtaskComponent implements OnInit {
   projects:any[];
   addorupdate: string ='Add'; 
   disableparenttask:boolean;
-
+  error:any={isError:false,errorMessage:''};
+  saveSuccess: boolean;  
+  alertMessage:string;
   constructor(private router: Router,private projectmanagerservice:ProjectmanagerService) { }
  
   ngOnInit() {
@@ -87,6 +89,18 @@ export class AddtaskComponent implements OnInit {
   this.task.ProjectName = project.ProjectName;
 }
 
+
+compareTwoDates(){
+  let startdate= Date.parse(this.task.Start_Date.toLocaleString().split(',')[0]);
+  let enddate= Date.parse(this.task.End_Date.toLocaleString().split(',')[0]);
+  if(enddate < startdate){
+      this.error={isError:true,errorMessage:'End Date cant before Start date'};
+  }
+  else{
+
+    this.error={isError:false,errorMessage:''};
+  }
+}
 EnableParentTask(){
   if(this.disableparenttask)
   {
@@ -99,6 +113,13 @@ EnableParentTask(){
 
 }
 
+  hideAlert()
+  {
+    this.saveSuccess = false;
+    this.router.navigate(['ViewTask']);
+    return false;
+  }
+
   createTask() {
     if( this.addorupdate =="Update")
     {
@@ -108,8 +129,9 @@ EnableParentTask(){
     else
     {
       this.projectmanagerservice.createTask(this.task)
-      .subscribe( data => {
-        this.router.navigate(['ViewTask']);
+      .subscribe( data => { 
+        this.saveSuccess = true;  
+        this.alertMessage ="New Task Created successfully.";      
       }); 
     }   
   }
@@ -117,7 +139,8 @@ EnableParentTask(){
   updateTask() {
     this.projectmanagerservice.updateTask(this.task)
       .subscribe( data => {
-        this.router.navigate(['ViewTask']);
+        this.saveSuccess = true;  
+        this.alertMessage ="Task Details Updated successfully.";      
       });    
   }
 }

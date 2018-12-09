@@ -29,8 +29,11 @@
                 <div class="col-lg-4" style="margin-left:-25px">
                     <input  type="text" style="width:175px"  [disabled]="disabledate" onfocus="(this.type='date')" [ngModel]="project.Start_Date|date:'yyyy-MM-dd'" (ngModelChange)="project.Start_Date=$event" #Start_Date="ngModel"  name="Start_Date" placeholder="Start Date" class="form-control" id="startdate">
                </div>
-               <div class="col-lg-4" style="margin-left:10px">
-                <input  type="text" style="width:175px" [disabled]="disabledate"  onfocus="(this.type='date')"  [ngModel]="project.End_Date|date:'yyyy-MM-dd'" (ngModelChange)="project.Start_Date=$event" #End_Date="ngModel"  name="End_Date" placeholder="End Date"class="form-control"  id="enddate">
+               <div class="col-lg-6" style="margin-left:10px">
+                <input  type="text" style="width:175px" [disabled]="disabledate" (blur)="compareTwoDates()"  onfocus="(this.type='date')"  [ngModel]="project.End_Date|date:'yyyy-MM-dd'" (ngModelChange)="project.End_Date=$event" #End_Date="ngModel"  name="End_Date" placeholder="End Date"class="form-control"  id="enddate">
+                <span *ngIf="error.isError">
+                    {{ error.errorMessage }}
+                </span>
               </div>
             </div>
                

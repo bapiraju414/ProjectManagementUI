@@ -4,6 +4,12 @@
   </h1>
   </div>
   <!-- Default form contact -->
+  <div style="margin: 20px;">
+        <div class="alert alert-success" *ngIf="saveSuccess">
+            <a href="#" class="close" (click)="hideAlert()">&times;</a>
+            <strong>Success!</strong> {{this.alertMessage}}
+        </div>
+      </div>
   <div  style="margin: auto; width: 75%; border: 3px solid #008000;padding: 10px;">
       <form name="form" (ngSubmit)="f.form.valid && createTask()" #f="ngForm" novalidate>
       <div class="row mb-4" style="padding-left: 140px">
@@ -78,10 +84,13 @@
                    <label for="enddate" style="font-weight: bold">End Date:</label>
               </div>
               <div class="col-lg-6">
-                   <input type="date" class="form-control"  [ngModel]="task.End_Date|date:'yyyy-MM-dd'" (ngModelChange)="task.End_Date=$event" #End_Date="ngModel"  required name="End_Date"  id="enddate">
+                   <input type="date" class="form-control" (blur)="compareTwoDates()"  [ngModel]="task.End_Date|date:'yyyy-MM-dd'" (ngModelChange)="task.End_Date=$event" #End_Date="ngModel"  required name="End_Date"  id="enddate">
                    <span class="help-block" *ngIf="End_Date.errors?.required && f.submitted">
                       End_Date is required
                   </span>
+                  <span *ngIf="error.isError">
+                    {{ error.errorMessage }}
+                </span>
               </div>
           </div> 
           <div class="row mb-4" style="padding-left: 140px">

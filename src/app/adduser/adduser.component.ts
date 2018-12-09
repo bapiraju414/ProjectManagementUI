@@ -19,6 +19,8 @@ export class AdduserComponent implements OnInit {
   userFilter: any = {firstName: '' };
   form:NgForm;
   addorupdate: string ='Add';
+  saveSuccess: boolean;  
+  alertMessage:string;
   constructor(private orderPipe: OrderPipe,private filterPipe: FilterPipe,private projectmanagerservice:ProjectmanagerService) { }
 
   ngOnInit() {
@@ -37,13 +39,15 @@ export class AdduserComponent implements OnInit {
   getUser(){
     this.projectmanagerservice.getUsers()
     .subscribe( data => {
-      this.users = data;
+      this.users = data;     
     });
   }
 
   deleteUser(user:User){
     this.projectmanagerservice.deleteUserById(user.userId)
-    .subscribe( data => { 
+    .subscribe( data => {
+      this.saveSuccess = true;  
+        this.alertMessage ="User Details Deleted successfully."; 
       this.getUser()    
     });
    
@@ -53,6 +57,8 @@ export class AdduserComponent implements OnInit {
     {
       this.projectmanagerservice.createUser(this.user)
       .subscribe( data => { 
+        this.saveSuccess = true;  
+        this.alertMessage ="New User added successfully.";
         this.getUser()       
       });     
       
@@ -61,12 +67,20 @@ export class AdduserComponent implements OnInit {
     {
       this.projectmanagerservice.updateUser(this.user)
       .subscribe( data => {  
+        this.saveSuccess = true;  
+        this.alertMessage ="User Details Updated successfully.";
        this.getUser();      
       });
     
     }
     
   }
+
+  hideAlert()
+   {
+     this.saveSuccess = false;
+     return false;
+   }
     EditUser(user:User) {
       this.addorupdate="Upadte";
       this.projectmanagerservice.getUserById(user.userId)
