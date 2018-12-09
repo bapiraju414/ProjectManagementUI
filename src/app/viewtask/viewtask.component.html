@@ -67,15 +67,15 @@
     </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let task of tasks|orderBy: order:reverse:'case-insensitive'| filterBy: task.ProjectName" class="table-success">
+      <tr *ngFor="let task of filteredList" class="table-success">
         <td >{{task.Task_ID}}</td>
         <td>{{task.TaskName}}</td>
         <td>{{task.Parent_Task}}</td>
         <td>{{task.Priority}}</td>
         <td>{{task.Start_Date| date:'shortDate'}}</td>
         <td>{{task.End_Date| date:'shortDate'}}</td>
-        <td><button class="btn btn-dark" (click)="editTask(task)"> Edit</button></td>
-        <td><button class="btn btn-dark" (click)="endTask(task)" style="margin-left: 20px;"> End Task</button></td>
+        <td><button class="btn btn-dark" [disabled]="task.Status" (click)="editTask(task)"> Edit</button></td>
+        <td><button class="btn btn-dark" [disabled]="task.Status" (click)="endTask(task)" style="margin-left: 20px;"> End Task</button></td>
       </tr>
     </tbody>
   </table>

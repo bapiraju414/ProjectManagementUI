@@ -32,6 +32,10 @@ export class ProjectmanagerService {
   getTaskById(id: number) {
     return this.http.get<Task>(this.baseUrl + '/api/GetTasksById/' + id);
   }
+
+  getTaskByProjectId(id: number) {
+    return this.http.get<Task[]>(this.baseUrl + '/api/GetTasksByProjectId/' + id);
+  }
   
   createTask(task: Task) {
     return this.http.post(this.baseUrl+'/api/AddTask', task);

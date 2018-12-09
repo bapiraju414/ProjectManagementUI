@@ -20,15 +20,16 @@ export class ViewtaskComponent implements OnInit {
   order: string = 'project.ProjectName';
   reverse: boolean = false;
   ProjectFilter: any = {ProjectName: '' };
+  filteredList:any[]
 
   constructor(private orderPipe: OrderPipe,private filterPipe: FilterPipe,private router: Router,private projectmanagerservice:ProjectmanagerService) { }
 
   ngOnInit() {
-    this.projectmanagerservice.GetTaskDetails()
-    .subscribe( data => {
-      this.tasks = data;
-    });  
-
+    // this.projectmanagerservice.GetTaskDetails()
+    // .subscribe( data => {
+    //   this.tasks = data;
+    // });  
+  
     this.projectmanagerservice.getProjects()
     .subscribe( data => {
       this.projects = data;
@@ -39,6 +40,13 @@ export class ViewtaskComponent implements OnInit {
   SelectProject(project:Project){
     this.task.Project_ID = project.Project_ID;
     this.task.ProjectName = project.ProjectName;
+
+     this.projectmanagerservice.getTaskByProjectId(project.Project_ID)
+    .subscribe( data => {
+      this.tasks = data;
+      this.assignCopy();
+    }); 
+    
   }
   
   editTask(task: any): void {
@@ -47,11 +55,24 @@ export class ViewtaskComponent implements OnInit {
     this.router.navigate(['AddTask']);
   };
 
+  assignCopy() {
+    this.filteredList = Object.assign([], this.tasks);   
+  }
+
   setOrder(value: string) {
-    if (this.order === value) {
-      this.reverse = !this.reverse;
-    }        
-    this.order = value;
+    if (value == 'user.task.Start_Date') {
+
+      this.filteredList.sort((a, b) => {
+
+        if (a.Start_Date < b.Start_Date) return -1;
+
+        else if (a.Start_Date > b.Start_Date) return 1;
+
+        else return 0;
+
+      });
+
+    }
   }
 
 }
