@@ -75,7 +75,7 @@
            
         <div class="row mb-2">
             <div class="col-lg-10"  style="margin-top: 10px;margin-left:6px;margin-right:10px">
-                <input type="text" class="form-control" placeholder="Search" id="txtSearch">
+                <input type="text" class="form-control"  [(ngModel)]="ProjectFilter.ProjectName" placeholder="Search by Project" id="txtSearch">
             </div>
         </div>
 		   <div class="row mb-4">
@@ -83,19 +83,19 @@
                         <label style="font-weight: bold">Sort By:</label>
                  </div>
                  <div class="col-lg-2">
-                        <input type="button" class="btn btn-dark" value="Start Date" >
+                        <input type="button" class="btn btn-dark" value="Start Date" (click)="setOrder('project.Start_Date')">
                  </div>
                  <div class="col-lg-2">
-                        <input type="button" class="btn btn-dark" value="End Date" >
+                        <input type="button" class="btn btn-dark" value="End Date" (click)="setOrder('project.End_Date')">
                  </div>
                  <div class="col-lg-2">
-                        <input type="button" class="btn btn-dark" value="Priority" >
+                        <input type="button" class="btn btn-dark" value="Priority" (click)="setOrder('project.Priority')">
                  </div>
                  <div class="col-lg-2">
-                        <input type="button" class="btn btn-dark" value="Completed" >
+                        <input type="button" class="btn btn-dark" value="Completed" (click)="setOrder('project.completedtask')">
                  </div>
           </div>
-          <div  *ngFor="let project of projects" style="margin:auto;padding:10px;">
+          <div  *ngFor="let project of projects | orderBy: order:reverse:'case-insensitive'| filterBy: ProjectFilter" style="margin:auto;padding:10px;">
               <div class="row mb-1" style="margin:auto;padding:10px;">
                   <div class="col-lg-4">
                      <label style="font-weight: bold">Project:</label>   {{project.ProjectName}}    
@@ -105,7 +105,7 @@
                           <label style="font-weight: bold">Priority:</label>  {{project.Priority}}
                    </div>
                    <div class="col-lg-4">
-                          <input type="button" class="btn btn-dark" (click)=EditProject(project) value="Update" >
+                          <input type="button" class="btn btn-dark" (click)=EditProject(project) value="Edit" >
                    </div> 
                 </div> 	
                    

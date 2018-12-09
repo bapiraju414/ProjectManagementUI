@@ -26,16 +26,16 @@
                   <label style="font-weight: bold">Sort By:</label>
               </td>
               <td>
-                  <input type="button" class="btn btn-dark" value="Start Date">  
+                  <input type="button" class="btn btn-dark" value="Start Date" (click)="setOrder('user.task.Start_Date')" >  
               </td>
               <td>
-                  <input type="button" class="btn btn-dark" value="End Date" >
+                  <input type="button" class="btn btn-dark" value="End Date" (click)="setOrder('user.task.End_Date')"  >
               </td>
               <td>
-                  <input type="button" class="btn btn-dark" value="Priority">
+                  <input type="button" class="btn btn-dark" value="Priority" (click)="setOrder('task.Priority')" >
               </td>
               <td>
-                  <input type="button" class="btn btn-dark" value="Completed">
+                  <input type="button" class="btn btn-dark" value="Task" (click)="setOrder('task.TaskName')">
               </td>
             </tr>
           </table>                          
@@ -56,7 +56,7 @@
   <table class="table table-striped">
     <thead class="thead-dark">
     <tr>
-      <th  style="visibility:hidden">Id</th>
+      <th>Id</th>
       <th>Task</th>
       <th>Parent</th>
       <th>Priority</th>
@@ -67,8 +67,8 @@
     </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let task of tasks" class="table-success">
-        <td style="visibility:hidden">{{task.Task_ID}}</td>
+      <tr *ngFor="let task of tasks|orderBy: order:reverse:'case-insensitive'| filterBy: task.ProjectName" class="table-success">
+        <td >{{task.Task_ID}}</td>
         <td>{{task.TaskName}}</td>
         <td>{{task.Parent_Task}}</td>
         <td>{{task.Priority}}</td>

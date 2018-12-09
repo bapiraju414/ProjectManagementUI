@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Project} from "../model/project.model";
 import {User} from "../model/user.model";
 import {ProjectmanagerService} from '../projectmanager.service';
+import { OrderPipe } from 'ngx-order-pipe';
 @Component({
   selector: 'app-addproject',
   templateUrl: './addproject.component.html',
@@ -13,7 +14,10 @@ export class AddprojectComponent implements OnInit {
   projects:Project[];
   addorupdate: string ='Add';
   StartEndDateSelected: boolean;
-  constructor(private projectmanagerservice:ProjectmanagerService) { }
+  order: string = 'project.ProjectName';
+  reverse: boolean = false;
+  ProjectFilter: any = {ProjectName: '' };
+  constructor(private orderPipe: OrderPipe,private projectmanagerservice:ProjectmanagerService) { }
 
   ngOnInit() {
     this.addorupdate="Add";
@@ -69,5 +73,13 @@ export class AddprojectComponent implements OnInit {
       .subscribe( data => {
         this.project = data;
       });
+    }
+
+    setOrder(value: string) {
+      if (this.order === value) {
+        this.reverse = !this.reverse;
+      }        
+      this.order = value;
+      
     }
 }

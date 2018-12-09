@@ -3,6 +3,8 @@ import {Task} from "../model/task.model";
 import {ProjectmanagerService} from '../projectmanager.service';
 import {Project} from "../model/project.model";
 import {Router} from "@angular/router";
+import { OrderPipe } from 'ngx-order-pipe';
+import { FilterPipe } from 'ngx-filter-pipe';
 
 @Component({
   selector: 'app-viewtask',
@@ -15,8 +17,11 @@ export class ViewtaskComponent implements OnInit {
   projects:Project[];
   task = new Task();;
   project:Project;
+  order: string = 'project.ProjectName';
+  reverse: boolean = false;
+  ProjectFilter: any = {ProjectName: '' };
 
-  constructor(private router: Router,private projectmanagerservice:ProjectmanagerService) { }
+  constructor(private orderPipe: OrderPipe,private filterPipe: FilterPipe,private router: Router,private projectmanagerservice:ProjectmanagerService) { }
 
   ngOnInit() {
     this.projectmanagerservice.GetTaskDetails()
@@ -42,5 +47,11 @@ export class ViewtaskComponent implements OnInit {
     this.router.navigate(['AddTask']);
   };
 
+  setOrder(value: string) {
+    if (this.order === value) {
+      this.reverse = !this.reverse;
+    }        
+    this.order = value;
+  }
 
 }

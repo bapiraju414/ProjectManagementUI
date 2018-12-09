@@ -18,7 +18,9 @@ export class AddtaskComponent implements OnInit {
   users:User[];
   parenttasks:any[];
   projects:any[];
-  addorupdate: string ='Add';
+  addorupdate: string ='Add'; 
+  
+
   constructor(private router: Router,private projectmanagerservice:ProjectmanagerService) { }
  
   ngOnInit() {
