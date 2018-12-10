@@ -131,9 +131,10 @@
       
             <!-- Modal body -->
             <div class="modal-body">
-                <ul *ngFor="let user of users" class="list-group">
-                    <li class="list-group-item" (click)="SelectUser(user)"><label style="display:none">{{user.userId}}</label>{{user.firstName}}</li>                    
-                  </ul> 
+                    <input type="text" class="form-control" [(ngModel)]="UserFilter.firstName"  placeholder="Search by User" id="txtmanager">
+                    <ul *ngFor="let user of users |filterBy: UserFilter"  class="list-group" style="margin-top:10px">
+                        <li class="list-group-item" (click)="SelectUser(user)"><label style="display:none">{{user.userId}}</label>{{user.firstName}}</li>                    
+                      </ul> 
             </div>
       
             <!-- Modal footer -->
@@ -158,7 +159,8 @@
      
            <!-- Modal body -->
            <div class="modal-body">
-               <ul *ngFor="let parent of parenttasks" class="list-group">
+                <input type="text" class="form-control" [(ngModel)]="ParentFilter.Parent_Task"  placeholder="Search by Project" id="txtParent">               
+               <ul *ngFor="let parent of parenttasks|filterBy: ParentFilter" class="list-group" style="margin-top:10px">
                    <li class="list-group-item" (click)="SelectParent(parent)"><label style="display:none">{{parent.Parent_ID}}</label>{{parent.Parent_Task}}</li>                    
                  </ul> 
            </div>
@@ -184,7 +186,8 @@
      
            <!-- Modal body -->
            <div class="modal-body">
-               <ul *ngFor="let project of projects" class="list-group">
+                <input type="text" class="form-control" [(ngModel)]="ProjectFilter.ProjectName"  placeholder="Search by Project" id="txtmanager">               
+               <ul *ngFor="let project of projects |filterBy: ProjectFilter" class="list-group" style="margin-top:10px">
                    <li class="list-group-item" (click)="SelectProject(project)"><label style="display:none">{{project.Project_ID}}</label>{{project.ProjectName}}</li>                    
                  </ul> 
            </div>

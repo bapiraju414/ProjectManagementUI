@@ -94,7 +94,8 @@
    
          <!-- Modal body -->
          <div class="modal-body">
-             <ul *ngFor="let project of projects" class="list-group">
+            <input type="text" class="form-control" [(ngModel)]="ProjectModalFilter.ProjectName"  placeholder="Search by Project" id="txtmanager">               
+               <ul *ngFor="let project of projects |filterBy: ProjectModalFilter" class="list-group" style="margin-top:10px">
                  <li class="list-group-item" (click)="SelectProject(project)"><label style="display:none">{{project.Project_ID}}</label>{{project.ProjectName}}</li>                    
                </ul> 
          </div>

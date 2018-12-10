@@ -24,6 +24,9 @@ export class AddtaskComponent implements OnInit {
   error:any={isError:false,errorMessage:''};
   saveSuccess: boolean;  
   alertMessage:string;
+  ProjectFilter: any = {ProjectName: '' };
+  UserFilter: any = {firstName: '' };
+  ParentFilter: any = {Parent_Task: '' };
   constructor(private router: Router,private projectmanagerservice:ProjectmanagerService) { }
  
   ngOnInit() {

@@ -158,7 +158,8 @@
            
                  <!-- Modal body -->
                  <div class="modal-body">
-                     <ul *ngFor="let user of users" class="list-group">
+                     <input type="text" class="form-control" [(ngModel)]="UserFilter.firstName"  placeholder="Search by User" id="txtmanager">
+                     <ul *ngFor="let user of users |filterBy: UserFilter"  class="list-group" style="margin-top:10px">
                          <li class="list-group-item" (click)="SelectUser(user)"><label style="display:none">{{user.userId}}</label>{{user.firstName}}</li>                    
                        </ul> 
                  </div>

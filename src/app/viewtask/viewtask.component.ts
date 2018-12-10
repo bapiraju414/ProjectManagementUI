@@ -20,8 +20,8 @@ export class ViewtaskComponent implements OnInit {
   order: string = 'project.ProjectName';
   reverse: boolean = false;
   ProjectFilter: any = {ProjectName: '' };
-  filteredList:any[]
-
+  filteredList:any[];
+  ProjectModalFilter: any = {ProjectName: '' };
   constructor(private orderPipe: OrderPipe,private filterPipe: FilterPipe,private router: Router,private projectmanagerservice:ProjectmanagerService) { }
 
   ngOnInit() {

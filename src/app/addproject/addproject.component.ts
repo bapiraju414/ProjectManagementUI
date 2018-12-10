@@ -4,6 +4,8 @@ import {User} from "../model/user.model";
 import {ProjectmanagerService} from '../projectmanager.service';
 import { OrderPipe } from 'ngx-order-pipe';
 import { NgForm } from '@angular/forms/src/directives/ng_form';
+import { FilterPipe } from 'ngx-filter-pipe';
+
 @Component({
   selector: 'app-addproject',
   templateUrl: './addproject.component.html',
@@ -18,11 +20,12 @@ export class AddprojectComponent implements OnInit {
   order: string = 'project.ProjectName';
   reverse: boolean = false;
   ProjectFilter: any = {ProjectName: '' };
+  UserFilter: any = {firstName: '' };
   error:any={isError:false,errorMessage:''};  
   saveSuccess: boolean;  
   alertMessage:string;
   form:NgForm;
-  constructor(private orderPipe: OrderPipe,private projectmanagerservice:ProjectmanagerService) { }
+  constructor(private orderPipe: OrderPipe,private filterPipe: FilterPipe,private projectmanagerservice:ProjectmanagerService) { }
 
   ngOnInit() {
     this.addorupdate="Add";
