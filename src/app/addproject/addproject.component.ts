@@ -3,6 +3,7 @@ import {Project} from "../model/project.model";
 import {User} from "../model/user.model";
 import {ProjectmanagerService} from '../projectmanager.service';
 import { OrderPipe } from 'ngx-order-pipe';
+import { NgForm } from '@angular/forms/src/directives/ng_form';
 @Component({
   selector: 'app-addproject',
   templateUrl: './addproject.component.html',
@@ -17,8 +18,10 @@ export class AddprojectComponent implements OnInit {
   order: string = 'project.ProjectName';
   reverse: boolean = false;
   ProjectFilter: any = {ProjectName: '' };
-  error:any={isError:false,errorMessage:''};
-
+  error:any={isError:false,errorMessage:''};  
+  saveSuccess: boolean;  
+  alertMessage:string;
+  form:NgForm;
   constructor(private orderPipe: OrderPipe,private projectmanagerservice:ProjectmanagerService) { }
 
   ngOnInit() {
@@ -59,11 +62,14 @@ export class AddprojectComponent implements OnInit {
  
 
   }
-  createProject() {
+  createProject(form:NgForm) {
     if(this.addorupdate == "Add")
     {
     this.projectmanagerservice.createProject(this.project)
       .subscribe( data => {
+        this.saveSuccess = true; 
+        this.alertMessage ="New Project Created successfully."; 
+        form.reset();
          this.getProjectDetails();
       });
     }
@@ -72,6 +78,10 @@ export class AddprojectComponent implements OnInit {
 
       this.projectmanagerservice.updateProject(this.project)
       .subscribe( data => {
+        this.saveSuccess = true; 
+        this.alertMessage ="Task Details Updated successfully.";
+        this.addorupdate="Add"; 
+        form.reset();      
         this.getProjectDetails();
       });
     }
@@ -118,4 +128,15 @@ export class AddprojectComponent implements OnInit {
       this.order = value;
       
     }
+
+    hideAlert()
+    {
+      this.saveSuccess = false;    
+      return false;
+    }
+
+    resetForm(form:NgForm) {
+      form.reset();
+    }
+  
 }

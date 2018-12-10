@@ -32,8 +32,8 @@ export class AdduserComponent implements OnInit {
     
   }
 
-  resetForm() {
-    this.form.reset();
+  resetForm(form:NgForm) {
+    form.reset();
   }
 
   getUser(){
@@ -52,13 +52,14 @@ export class AdduserComponent implements OnInit {
     });
    
   }
-  createUser() {
+  createUser(form:NgForm) {
     if(this.addorupdate == "Add")
     {
       this.projectmanagerservice.createUser(this.user)
       .subscribe( data => { 
         this.saveSuccess = true;  
         this.alertMessage ="New User added successfully.";
+        form.reset();
         this.getUser()       
       });     
       
@@ -69,6 +70,7 @@ export class AdduserComponent implements OnInit {
       .subscribe( data => {  
         this.saveSuccess = true;  
         this.alertMessage ="User Details Updated successfully.";
+        form.reset();
        this.getUser();      
       });
     

@@ -3,9 +3,15 @@
     add-project!
   </h1>
   </div>
+  <div style="margin: 20px;">
+    <div class="alert alert-success" *ngIf="saveSuccess">
+        <a href="#" class="close" (click)="hideAlert()">&times;</a>
+        <strong>Success!</strong> {{this.alertMessage}}
+    </div>
+  </div>
   <!-- Default form contact -->
   <div  style="margin: auto; width: 75%; border: 3px solid #008000;padding: 10px;">
-      <form name="form" (ngSubmit)="f.form.valid && createProject()" #f="ngForm" novalidate>
+      <form name="form" (ngSubmit)="f.form.valid && createProject(f)" #f="ngForm" novalidate>
           <div class="row mb-4" style="padding-left: 140px">
                   <div class="col-lg-3">
                        <label for="project" style="font-weight: bold">Project:</label>
@@ -67,7 +73,7 @@
               <input type="submit" value={{addorupdate}} class="btn btn-dark">
             </div>
             <div class="col-lg-3 col-lg-offset-3">
-              <button type="submit" class="btn btn-dark">Reset</button>
+              <button type="reset" class="btn btn-dark" (click)="resetForm(f)">Reset</button>
             </div>
         </div> 
       </form>

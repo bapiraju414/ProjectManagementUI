@@ -5,6 +5,7 @@ import {Task} from "../model/task.model";
 import {ProjectmanagerService} from '../projectmanager.service';
 import {ParentTask} from 'src/app/model/parenttask.model';
 import {Router} from "@angular/router";
+import { NgForm } from '@angular/forms/src/directives/ng_form';
 @Component({
   selector: 'app-addtask',
   templateUrl: './addtask.component.html',
@@ -120,10 +121,10 @@ EnableParentTask(){
     return false;
   }
 
-  createTask() {
+  createTask(form:NgForm) {
     if( this.addorupdate =="Update")
     {
-      this.updateTask();
+      this.updateTask(form);
 
     }
     else
@@ -131,16 +132,22 @@ EnableParentTask(){
       this.projectmanagerservice.createTask(this.task)
       .subscribe( data => { 
         this.saveSuccess = true;  
+        form.reset();
         this.alertMessage ="New Task Created successfully.";      
       }); 
     }   
   }
 
-  updateTask() {
+  updateTask(form:NgForm) {
     this.projectmanagerservice.updateTask(this.task)
       .subscribe( data => {
         this.saveSuccess = true;  
+        form.reset();
         this.alertMessage ="Task Details Updated successfully.";      
       });    
+  }
+
+  resetForm(form:NgForm) {
+    form.reset();
   }
 }

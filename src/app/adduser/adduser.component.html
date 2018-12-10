@@ -11,7 +11,7 @@
     </div>
   </div>
   <div  style="margin: auto; width: 75%; border: 3px solid #008000;padding: 10px;">
-      <form name="form" (ngSubmit)="f.form.valid && createUser()" #f="ngForm" novalidate>
+      <form name="form" (ngSubmit)="f.form.valid && createUser(f)" #f="ngForm" novalidate>
           <div class="row mb-4" style="padding-left: 140px">
                   <div class="col-lg-3">
                        <label for="fname" style="font-weight: bold">First Name:</label>
@@ -54,7 +54,7 @@
               <input type="submit" value={{this.addorupdate}} class="btn btn-dark">
             </div>
             <div class="col-lg-3 col-lg-offset-3">
-              <button type="reset" class="btn btn-dark" (click)="resetForm()">Reset</button>
+              <button type="reset" class="btn btn-dark" (click)="resetForm(f)">Reset</button>
             </div>
         </div>           
       </form>
