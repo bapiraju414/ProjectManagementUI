@@ -73,7 +73,7 @@ IF DEFINED KUDU_SELECT_NODE_VERSION_CMD (
   )
 
   IF NOT DEFINED NODE_EXE (
-    echo NODE_EXE Entered
+    echo NODE_EXE Entered node
     SET NODE_EXE=node
   )
 
