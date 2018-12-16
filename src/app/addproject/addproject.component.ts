@@ -30,12 +30,12 @@ export class AddprojectComponent implements OnInit {
   ngOnInit() {
     this.addorupdate="Add";
     this.disabledate=true;
-    this.projectmanagerservice.getUsers()
-    .subscribe( data => {
-      this.users = data;
-    });
+    // this.projectmanagerservice.getUsers()
+    // .subscribe( data => {
+    //   this.users = data;
+    // });
 
-      this.getProjectDetails();
+     // this.getProjectDetails();
     
   
   }
@@ -58,10 +58,10 @@ export class AddprojectComponent implements OnInit {
 }
   getProjectDetails(){
 
-    this.projectmanagerservice.GetProjectDetails()
-    .subscribe( data => {
-      this.projects = data;
-    }); 
+    // this.projectmanagerservice.GetProjectDetails()
+    // .subscribe( data => {
+    //   this.projects = data;
+    // }); 
  
 
   }

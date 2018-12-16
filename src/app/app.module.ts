@@ -16,23 +16,23 @@ const routes: Routes = [
   {
     path: 'AddProject',
     component:AddprojectComponent,
-  },
-  {
-    path: 'AddTask',
-    component:AddtaskComponent,  
-  },
-  {
-    path: 'AddUser',
-    component:AdduserComponent,
-  },
-  {
-    path: 'ViewTask',
-    component:ViewtaskComponent,
-  },
-  {
-    path: '',
-    component:AddprojectComponent,
   }
+  // {
+  //   path: 'AddTask',
+  //   component:AddtaskComponent,  
+  // },
+  // {
+  //   path: 'AddUser',
+  //   component:AdduserComponent,
+  // },
+  // {
+  //   path: 'ViewTask',
+  //   component:ViewtaskComponent,
+  // },
+  // {
+  //   path: '',
+  //   component:AddprojectComponent,
+  // }
 
 ];
 
