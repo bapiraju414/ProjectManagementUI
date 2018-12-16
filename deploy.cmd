@@ -55,22 +55,20 @@ goto Deployment
 :SelectNodeVersion
 
 IF DEFINED KUDU_SELECT_NODE_VERSION_CMD (
-  :: The following are done only on Windows Azure Websites environment
-  echo KUDU_SELECT_NODE_VERSION_CMD ENTER
-  call %KUDU_SELECT_NODE_VERSION_CMD% "%DEPLOYMENT_SOURCE%" "%DEPLOYMENT_TARGET%" "%DEPLOYMENT_TEMP%"
-  echo ERRORLEVEL
+  :: The following are done only on Windows Azure Websites environment  
+  call %KUDU_SELECT_NODE_VERSION_CMD% "%DEPLOYMENT_SOURCE%" "%DEPLOYMENT_TARGET%" "%DEPLOYMENT_TEMP%"  
   IF !ERRORLEVEL! NEQ 0 goto error
 
-  IF EXIST "%DEPLOYMENT_TEMP%\__nodeVersion.tmp" (
-    echo __nodeVersion.tmp
-    SET /p NODE_EXE=<"%DEPLOYMENT_TEMP%\__nodeVersion.tmp"
-    echo ERRORLEVEL _nodeVersion.tmp
+  IF EXIST "%DEPLOYMENT_TEMP%\__nodeVersion.tmp" (   
+    SET /p NODE_EXE=<"%DEPLOYMENT_TEMP%\__nodeVersion.tmp"  
     IF !ERRORLEVEL! NEQ 0 goto error
   )
   
   IF EXIST "%DEPLOYMENT_TEMP%\__npmVersion.tmp" (
     echo NPM_JS_PATH Entered
+    echo %DEPLOYMENT_TEMP%
     SET /p NPM_JS_PATH=<"%DEPLOYMENT_TEMP%\__npmVersion.tmp"
+     echo !ERRORLEVEL! _nodeVersion.tmp
     IF !ERRORLEVEL! NEQ 0 goto error
   )
 
