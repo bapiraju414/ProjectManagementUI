@@ -24,6 +24,7 @@ export class AddprojectComponent implements OnInit {
   saveSuccess: boolean;  
   alertMessage:string;
   form:NgForm;
+  title = 'add-project!';
   constructor(private projectmanagerservice:ProjectmanagerService) { }
 
   ngOnInit() {

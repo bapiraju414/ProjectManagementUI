@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {HttpClientTestingModule,HttpTestingController} from '@angular/common/http/testing';
 import { AdduserComponent } from './adduser.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -7,20 +7,19 @@ import {HttpClientModule} from "@angular/common/http";
 import { MockPipe } from '../model/MockPipe';
 import { MockOrderby } from '../model/MockOrderby';
 import {ProjectmanagerService} from '../projectmanager.service';
+import { request } from 'http';
 
 describe('AdduserComponent', () => {
   let component: AdduserComponent;
   let fixture: ComponentFixture<AdduserComponent>;
-  let service: ProjectmanagerService;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AdduserComponent,MockPipe,MockOrderby],imports:[BrowserModule,HttpClientTestingModule,FormsModule,HttpClientModule],
       providers: [ProjectmanagerService]
     })
-    .compileComponents();
-    
-     service = TestBed.get(ProjectmanagerService);
-    
+    .compileComponents();   
+        
   }));
 
   beforeEach(() => {
@@ -28,6 +27,8 @@ describe('AdduserComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+
+  
 
   it('should create', () => {
     expect(component).toBeTruthy();
@@ -46,5 +47,5 @@ describe('AdduserComponent', () => {
     expect(compiled.querySelector('h1').textContent).toContain('add-user!');
   }));
 
-
+  
 });
