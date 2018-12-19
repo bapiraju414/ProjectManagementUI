@@ -27,6 +27,7 @@ export class AddtaskComponent implements OnInit {
   ProjectFilter: any = {ProjectName: '' };
   UserFilter: any = {firstName: '' };
   ParentFilter: any = {Parent_Task: '' };
+  title = 'add-task!';
   constructor(private router: Router,private projectmanagerservice:ProjectmanagerService) { }
  
   ngOnInit() {

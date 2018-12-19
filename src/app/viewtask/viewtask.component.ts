@@ -3,8 +3,7 @@ import {Task} from "../model/task.model";
 import {ProjectmanagerService} from '../projectmanager.service';
 import {Project} from "../model/project.model";
 import {Router} from "@angular/router";
-import { OrderPipe } from 'ngx-order-pipe';
-import { FilterPipe } from 'ngx-filter-pipe';
+
 
 @Component({
   selector: 'app-viewtask',
@@ -22,7 +21,8 @@ export class ViewtaskComponent implements OnInit {
   ProjectFilter: any = {ProjectName: '' };
   filteredList:any[];
   ProjectModalFilter: any = {ProjectName: '' };
-  constructor(private orderPipe: OrderPipe,private filterPipe: FilterPipe,private router: Router,private projectmanagerservice:ProjectmanagerService) { }
+  title = 'view-task!'
+  constructor(private router: Router,private projectmanagerservice:ProjectmanagerService) { }
 
   ngOnInit() {
     // this.projectmanagerservice.GetTaskDetails()

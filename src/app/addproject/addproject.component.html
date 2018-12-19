@@ -3,15 +3,15 @@
     add-project!
   </h1>
   </div>
-  <!-- <div style="margin: 20px;">
+  <div style="margin: 20px;">
     <div class="alert alert-success" *ngIf="saveSuccess">
         <a href="#" class="close" (click)="hideAlert()">&times;</a>
         <strong>Success!</strong> {{this.alertMessage}}
     </div>
-  </div> -->
+  </div>
   <!-- Default form contact -->
   <div  style="margin: auto; width: 75%; border: 3px solid #008000;padding: 10px;">
-      <!-- <form name="form" (ngSubmit)="f.form.valid && createProject(f)" #f="ngForm" novalidate>
+       <form name="form" (ngSubmit)="f.form.valid && createProject(f)" #f="ngForm" novalidate>
           <div class="row mb-4" style="padding-left: 140px">
                   <div class="col-lg-3">
                        <label for="project" style="font-weight: bold">Project:</label>
@@ -77,10 +77,10 @@
             </div>
         </div> 
       </form>
-   -->
+  
       
      
-    <!-- <div style="border: 3px solid #008000;">
+     <div style="border: 3px solid #008000;">
            
         <div class="row mb-2">
             <div class="col-lg-10"  style="margin-top: 10px;margin-left:6px;margin-right:10px">
@@ -143,34 +143,34 @@
                      
            
                   
-     </div> -->
+     </div> 
 		
         
-      <!-- <div class="modal" id="myModal"> -->
-          <!-- <div class="modal-dialog"> -->
-            <!-- <div class="modal-content"> -->
+      <div class="modal" id="myModal"> -->
+          <div class="modal-dialog">
+             <div class="modal-content">
            
-            <!--                
+                           
                  <div class="modal-header">
                    <h4 class="modal-title">Select Manager</h4>
                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                 </div> -->
+                 </div>
            
-             <!--                  
+                              
                  <div class="modal-body">
                      <input type="text" class="form-control" [(ngModel)]="UserFilter.firstName"  placeholder="Search by User" id="txtmanager">
                      <ul *ngFor="let user of users |filterBy: UserFilter"  class="list-group" style="margin-top:10px">
                          <li class="list-group-item" (click)="SelectUser(user)"><label style="display:none">{{user.userId}}</label>{{user.firstName}}</li>                    
                        </ul> 
-                 </div> -->
+                 </div>
            
                
-                 <!-- <div class="modal-footer">
+                 <div class="modal-footer">
                    <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-                 </div> -->
+                 </div>
            
-             <!-- </div> -->
-            <!-- </div> -->
+            </div> 
+            </div>
        </div>
             
 

@@ -11,28 +11,29 @@ import { AddtaskComponent } from './addtask/addtask.component';
 import { AdduserComponent } from './adduser/adduser.component';
 import { AddprojectComponent } from './addproject/addproject.component';
 import { ViewtaskComponent } from './viewtask/viewtask.component';
-
+import { MockPipe } from './model/MockPipe';
+import { MockOrderby } from './model/MockOrderby';
 const routes: Routes = [
   {
     path: 'AddProject',
     component:AddprojectComponent,
+  },
+  {
+    path: 'AddTask',
+    component:AddtaskComponent,  
+  },
+  {
+    path: 'AddUser',
+    component:AdduserComponent,
+  },
+  {
+    path: 'ViewTask',
+    component:ViewtaskComponent,
+  },
+  {
+    path: '',
+    component:AddprojectComponent,
   }
-  // {
-  //   path: 'AddTask',
-  //   component:AddtaskComponent,  
-  // },
-  // {
-  //   path: 'AddUser',
-  //   component:AdduserComponent,
-  // },
-  // {
-  //   path: 'ViewTask',
-  //   component:ViewtaskComponent,
-  // },
-  // {
-  //   path: '',
-  //   component:AddprojectComponent,
-  // }
 
 ];
 
@@ -42,7 +43,9 @@ const routes: Routes = [
     AddtaskComponent,
     AdduserComponent,
     AddprojectComponent,
-    ViewtaskComponent
+    ViewtaskComponent,
+    MockPipe,
+    MockOrderby
   ],
   imports: [
     BrowserModule,

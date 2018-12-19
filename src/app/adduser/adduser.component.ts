@@ -2,14 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import {User} from "../model/user.model";
 import { NgForm } from '@angular/forms/src/directives/ng_form';
 import {ProjectmanagerService} from '../projectmanager.service';
-import { OrderPipe } from 'ngx-order-pipe';
-import { FilterPipe } from 'ngx-filter-pipe';
+//import { OrderPipe } from 'ngx-order-pipe';
+ import { FilterPipe } from 'ngx-filter-pipe';
 
 @Component({
   selector: 'app-adduser',
   templateUrl: './adduser.component.html',
   styleUrls: ['./adduser.component.css']
 })
+
+
+
 export class AdduserComponent implements OnInit {
 
   user = new User();
@@ -21,8 +24,8 @@ export class AdduserComponent implements OnInit {
   addorupdate: string ='Add';
   saveSuccess: boolean;  
   alertMessage:string;
- 
-  constructor(private orderPipe: OrderPipe,private filterPipe: FilterPipe,private projectmanagerservice:ProjectmanagerService) { }
+  title = 'add-user!';
+  constructor(private projectmanagerservice:ProjectmanagerService) { }
 
   ngOnInit() {
     this.addorupdate="Add";
